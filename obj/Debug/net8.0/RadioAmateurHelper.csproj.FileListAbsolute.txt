@@ -172,3 +172,4 @@ D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\obj\Debug\net8.0\
 D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\obj\Debug\net8.0\RadioAmateurHelper.genruntimeconfig.cache
 D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\obj\Debug\net8.0\ref\RadioAmateurHelper.dll
 D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\libman.json
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\obj\Debug\net8.0\RadioAmateurHelper.sourcelink.json
