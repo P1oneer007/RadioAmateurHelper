@@ -1,14 +1,17 @@
-# Используем базовый образ SDK
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+# Используем .NET 8.0 образы
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["RadioAmateurHelper/RadioAmateurHelper.csproj", "RadioAmateurHelper/"]
-RUN dotnet restore "RadioAmateurHelper/RadioAmateurHelper.csproj"
+
+# Копируем .csproj и восстанавливаем зависимости
+COPY ["RadioAmateurHelper.csproj", "./"]
+RUN dotnet restore "RadioAmateurHelper.csproj"
+
+# Копируем остальные файлы и собираем проект
 COPY . .
-WORKDIR "/src/RadioAmateurHelper"
 RUN dotnet build "RadioAmateurHelper.csproj" -c Release -o /app/build
 
 FROM build AS publish
