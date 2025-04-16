@@ -19,6 +19,7 @@ builder.Services.AddRazorPages();
 
 
 var app = builder.Build();
+app.Map("/healthz", () => Results.Ok("Healthy"));
 
 
 
