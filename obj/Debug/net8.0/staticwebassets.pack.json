@@ -245,6 +245,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\blinker.png",
+      "PackagePath": "staticwebassets\\uploads\\images\\blinker.png"
+    },
+    {
       "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\blog_home.png",
       "PackagePath": "staticwebassets\\uploads\\images\\blog_home.png"
     },

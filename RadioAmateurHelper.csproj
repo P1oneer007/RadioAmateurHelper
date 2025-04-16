@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="uploads\files\" />
     <Folder Include="wwwroot\uploads\images\" />
     <Folder Include="wwwroot\uploads\files\" />
 	  <Content Include="uploads\**\*.*">
@@ -22,6 +23,7 @@
     <None Remove="uploads\example_home.png" />
     <None Remove="uploads\exchange_home.png" />
     <None Remove="uploads\firmware_home_1.png" />
+    <None Remove="uploads\images\blinker.png" />
     <None Remove="uploads\references_home.png" />
     <None Remove="uploads\simulators_home.png" />
   </ItemGroup>
@@ -38,39 +40,43 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="uploads\blog_home.png">
+    <Content Update="uploads\images\blinker.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="uploads\calculators_home.png">
+    <Content Update="uploads\images\blog_home.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="uploads\circuit_home.png">
+    <Content Update="uploads\images\calculators_home.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="uploads\components_home.png">
+    <Content Update="uploads\images\circuit_home.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="uploads\example_home.png">
+    <Content Update="uploads\images\components_home.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="uploads\exchange_home.png">
+    <Content Update="uploads\images\example_home.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="uploads\firmware_home_1.png">
+    <Content Update="uploads\images\exchange_home.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="uploads\references_home.png">
+    <Content Update="uploads\images\firmware_home_1.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="uploads\simulators_home.png">
+    <Content Update="uploads\images\references_home.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="uploads\images\simulators_home.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

@@ -39,7 +39,8 @@ namespace RadioAmateurHelper.Data
                     Description = "Схема на NE555 для мигания светодиода.",
                     ImageUrl = "/uploads/images/blinker.png",
                     SchematicFilePath = "/uploads/files/blinker.pdf",
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.Now,
+                    Category = "для начинающих"
                 }
             );
 

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hBcdKBBXAeitFJHacF4+gt1/c5GN8MywBMFBjAuYqTg=",
+  "Hash": "6fCXhK+DrgXcB5aUkmLu1GEH4CjAeyy9ARpgZYRoiEo=",
   "Source": "RadioAmateurHelper",
   "BasePath": "_content/RadioAmateurHelper",
   "Mode": "Default",
@@ -2333,6 +2333,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\blinker.png",
+      "SourceId": "RadioAmateurHelper",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\",
+      "BasePath": "_content/RadioAmateurHelper",
+      "RelativePath": "uploads/images/blinker.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\images\\blinker.png"
     },
     {
       "Identity": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\blog_home.png",

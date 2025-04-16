@@ -39,13 +39,17 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/uploads"
 });
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    Console.WriteLine("Applying EF Core migrations...");
+    db.Database.Migrate();
+    Console.WriteLine("EF Core migrations applied successfully.");
+    DbInitializer.Initialize(db);
+}
+
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
 app.Run();
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    DbInitializer.Initialize(db);
-}

@@ -173,3 +173,13 @@ D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\obj\Debug\net8.0\
 D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\obj\Debug\net8.0\ref\RadioAmateurHelper.dll
 D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\libman.json
 D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\obj\Debug\net8.0\RadioAmateurHelper.sourcelink.json
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\blog_home.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\calculators_home.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\circuit_home.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\components_home.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\example_home.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\exchange_home.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\firmware_home_1.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\references_home.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\simulators_home.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\blinker.png
