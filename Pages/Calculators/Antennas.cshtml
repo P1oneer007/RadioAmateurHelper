@@ -1,0 +1,23 @@
+﻿@page
+@model RadioAmateurHelper.Pages.Calculators.AntennasModel
+@{
+    ViewData["Title"] = "Калькулятор антенн";
+}
+
+<h2>Расчёт длины антенны</h2>
+<form method="post">
+    <label>Частота (МГц):</label>
+    <input asp-for="Frequency" class="form-control" />
+
+    <button type="submit" class="btn btn-primary mt-2">Рассчитать</button>
+</form>
+
+@if (Model.Wavelength != null)
+{
+    <div class="mt-3">
+        <p>Длина волны: <strong>@Model.Wavelength м</strong></p>
+        <p>Полуволновый диполь (λ/2): <strong>@(Model.Wavelength / 2) м</strong></p>
+        <p>Четвертьволновая антенна (λ/4): <strong>@(Model.Wavelength / 4) м</strong></p>
+    </div>
+}
+

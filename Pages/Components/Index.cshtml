@@ -1,0 +1,25 @@
+﻿@page
+@model RadioAmateurHelper.Pages.Components.IndexModel
+@{
+    ViewData["Title"] = "Каталог компонентов";
+}
+
+<h2>Каталог электронных компонентов</h2>
+<form method="get">
+    <input asp-for="SearchTerm" placeholder="Введите название или маркировку..." class="form-control mb-3" />
+    <button type="submit" class="btn btn-outline-primary">Поиск</button>
+</form>
+
+<table class="table mt-3">
+    <thead><tr><th>Наименование</th><th>Тип</th><th>Описание</th></tr></thead>
+    <tbody>
+        @foreach (var c in Model.Results)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.Type</td>
+                <td>@c.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>

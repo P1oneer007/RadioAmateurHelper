@@ -1,0 +1,111 @@
+is_global = true
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = RadioAmateurHelper
+build_property.RootNamespace = RadioAmateurHelper
+build_property.ProjectDir = D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Admin/ServiceRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2VydmljZVJlcXVlc3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Blog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Calculators/Antennas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsY3VsYXRvcnNcQW50ZW5uYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Calculators/Divider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsY3VsYXRvcnNcRGl2aWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Calculators/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsY3VsYXRvcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Calculators/LCResonance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsY3VsYXRvcnNcTENSZXNvbmFuY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Calculators/OhmLaw.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsY3VsYXRvcnNcT2htTGF3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Circuits/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2lyY3VpdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Circuits/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2lyY3VpdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Components/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Exchange.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjaGFuZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Firmwares/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlybXdhcmVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/References/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVmZXJlbmNlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Services.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VydmljZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Simulators.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2ltdWxhdG9ycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/data/music/сайты/RadioAmateurHelper/RadioAmateurHelper/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-qehje3yf7b

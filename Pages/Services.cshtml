@@ -1,0 +1,34 @@
+﻿@page
+@model RadioAmateurHelper.Pages.ServicesModel
+@{
+    ViewData["Title"] = "Услуги и помощь по ремонту";
+}
+
+<h2>Услуги и помощь по ремонту</h2>
+<p>Мы предлагаем следующие услуги:</p>
+<ul>
+    <li>Ремонт радиотехники</li>
+    <li>Прошивка микроконтроллеров</li>
+    <li>Сборка и настройка схем</li>
+    <li>Подбор компонентов</li>
+    <li>Онлайн-помощь</li>
+</ul>
+<h3>Оставить заявку</h3>
+<form method="post">
+    <label asp-for="UserName">Имя:</label>
+    <input asp-for="UserName" class="form-control" />
+
+    <label asp-for="Contact">Контакт:</label>
+    <input asp-for="Contact" class="form-control" />
+
+    <label asp-for="Message">Сообщение:</label>
+    <textarea asp-for="Message" class="form-control"></textarea>
+
+    <button type="submit" class="btn btn-success mt-2">Отправить</button>
+</form>
+@if (Model.SuccessMessage != null)
+{
+    <div class="alert alert-success mt-3">
+        @Model.SuccessMessage
+    </div>
+}

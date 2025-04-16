@@ -1,0 +1,9 @@
+﻿@page "{id:int}"
+@model RadioAmateurHelper.Pages.Circuits.DeleteModel
+<h2>Удалить схему</h2>
+<form method="post">
+    <input type="hidden" asp-for="Circuit.Id" />
+    <p>Вы уверены, что хотите удалить схему <strong>@Model.Circuit.Title</strong>?</p>
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a href="/Circuits" class="btn btn-secondary">Отмена</a>
+</form>

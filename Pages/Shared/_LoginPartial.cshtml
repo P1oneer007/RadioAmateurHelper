@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using RadioAmateurHelper.Models
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-area="Identity" asp-page="/Account/Logout" method="post">
+        <button type="submit">Выход (@User.Identity?.Name)</button>
+    </form>
+}
+else
+{
+    <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+}

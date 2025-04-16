@@ -1,0 +1,18 @@
+﻿@page
+@model RadioAmateurHelper.Pages.Firmwares.IndexModel
+@{
+    ViewData["Title"] = "Прошивки";
+}
+
+<h2>Прошивки</h2>
+<p>В этом разделе вы можете найти и скачать прошивки для различных микроконтроллеров.</p>
+<ul>
+    @foreach (var fw in Model.Firmwares)
+    {
+        <li>
+            <strong>@fw.Name</strong><br />
+            <p>@fw.Description</p>
+            <a href="@fw.FilePath" download>Скачать</a>
+        </li>
+    }
+</ul>

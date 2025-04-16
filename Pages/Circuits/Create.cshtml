@@ -1,0 +1,28 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@model RadioAmateurHelper.Pages.Circuits.CreateModel
+@{
+    ViewData["Title"] = "Добавить схему";
+}
+
+<h2>Добавить схему</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Название</label>
+        <input asp-for="Circuit.Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Описание</label>
+        <textarea asp-for="Circuit.Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Изображение схемы</label>
+        <input asp-for="UploadImage" type="file" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Файл схемы (.pdf, .jpg, .zip)</label>
+        <input asp-for="UploadFile" type="file" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Сохранить</button>
+</form>

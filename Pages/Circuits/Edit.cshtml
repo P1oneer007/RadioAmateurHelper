@@ -1,0 +1,13 @@
+﻿@page "{id:int}"
+@model RadioAmateurHelper.Pages.Circuits.EditModel
+<h2>Редактировать схему</h2>
+<form method="post">
+    <input type="hidden" asp-for="Circuit.Id" />
+    <label>Название</label>
+    <input asp-for="Circuit.Title" class="form-control" />
+    <label>Описание</label>
+    <textarea asp-for="Circuit.Description" class="form-control"></textarea>
+    <label>Категория</label>
+    <input asp-for="Circuit.Category" class="form-control" />
+    <button type="submit" class="btn btn-primary mt-3">Сохранить</button>
+</form>

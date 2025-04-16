@@ -1,0 +1,14 @@
+﻿@page
+@model RadioAmateurHelper.Pages.References.IndexModel
+@{
+    ViewData["Title"] = "Справочники";
+}
+
+<h2>Справочная информация</h2>
+<p>Здесь собраны таблицы, формулы и другая полезная справочная информация.</p>
+<ul>
+    @foreach (var item in Model.Entries)
+    {
+        <li><strong>@item.Title</strong><br /><p>@item.Content</p></li>
+    }
+</ul>

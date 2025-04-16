@@ -1,0 +1,28 @@
+﻿@page
+@model RadioAmateurHelper.Pages.Calculators.IndexModel
+@{
+    ViewData["Title"] = "Калькуляторы";
+}
+
+<h2>Калькуляторы</h2>
+<form method="post">
+    <label for="calcSelect">Выберите тип расчета:</label>
+    <select asp-for="SelectedCalculator" class="form-select" id="calcSelect">
+        <option value="">-- выберите --</option>
+        <option value="OhmLaw">Закон Ома</option>
+
+        <option value="LCResonance">LC-резонанс</option>
+        <option value="Divider">Делитель напряжения</option>
+
+        <option value="Antennas">Калькулятор антенн</option>
+        <!-- другие калькуляторы можно добавить здесь -->
+    </select>
+    <button type="submit" class="btn btn-primary mt-2">Перейти</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.RedirectUrl))
+{
+    <script>
+        window.location.href = "@Model.RedirectUrl";
+    </script>
+}

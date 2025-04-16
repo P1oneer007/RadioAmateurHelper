@@ -1,0 +1,18 @@
+﻿@page
+@model RadioAmateurHelper.Pages.Calculators.OhmLawModel
+@{
+    ViewData["Title"] = "Закон Ома";
+}
+
+<h2>Калькулятор: Закон Ома</h2>
+<form method="post">
+    <label>Напряжение (В):</label>
+    <input asp-for="Voltage" class="form-control" />
+    <label>Сопротивление (Ом):</label>
+    <input asp-for="Resistance" class="form-control" />
+    <button type="submit" class="btn btn-primary mt-2">Рассчитать ток</button>
+</form>
+@if (Model.Current != null)
+{
+    <p class="mt-3"><strong>Ток:</strong> @Model.Current A</p>
+}

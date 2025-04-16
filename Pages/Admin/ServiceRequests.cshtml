@@ -1,0 +1,30 @@
+﻿@page
+@model RadioAmateurHelper.Pages.Admin.ServiceRequestsModel
+@{
+    ViewData["Title"] = "Заявки на ремонт";
+}
+
+<h2>Заявки на ремонт</h2>
+@if (Model.Requests.Any())
+{
+    <table class="table">
+        <thead>
+            <tr><th>Имя</th><th>Контакт</th><th>Сообщение</th><th>Дата</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model.Requests)
+            {
+                <tr>
+                    <td>@r.UserName</td>
+                    <td>@r.Contact</td>
+                    <td>@r.Message</td>
+                    <td>@r.CreatedAt.ToString("g")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Пока заявок нет.</p>
+}

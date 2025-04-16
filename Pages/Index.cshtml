@@ -1,0 +1,267 @@
+﻿@page
+@model RadioAmateurHelper.Pages.IndexModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<style>
+    body {
+        font-family: sans-serif;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #ddd;
+        font-size: 0.95rem;
+    }
+
+    .main-title {
+        text-align: center;
+        font-size: 1.8rem;
+        margin: 20px 0 10px 0;
+    }
+
+    .description {
+        text-align: center;
+        font-size: 0.95rem;
+        max-width: 800px;
+        margin: 0 auto 20px auto;
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #0066cc;
+        padding: 6px 12px;
+        border-radius: 5px;
+        transition: background-color 0.2s;
+    }
+
+    .nav-links a:hover {
+        background-color: #f0f0f0;
+    }
+
+    .preview-image {
+        display: block;
+        max-width: 90%;
+        height: auto;
+        margin: 0 auto 25px auto;
+        border-radius: 10px;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+
+    .image-row {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+        flex-wrap: wrap; /* адаптация на мобильных */
+        margin: 20px 0;
+    }
+
+    .image-row img.preview-image {
+        max-width: 80%;
+        max-height: 500px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px;
+        max-width: 1800px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+        .image-grid a {
+            text-decoration: none;
+        }
+
+    .preview-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .preview-image:hover {
+            transform: scale(1.02);
+        }
+
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #0066cc;
+        padding: 6px 12px;
+        border-radius: 5px;
+        transition: background-color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .dropdown:hover .dropbtn {
+        background-color: #f0f0f0;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        cursor: pointer;
+        display: inline-block;
+        color: #0066cc;
+        padding: 6px 12px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #ffffff;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 10px 12px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f5f5f5;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    @@media (max-width: 600px) {
+        .main-title {
+            font-size: 1.4rem;
+        }
+
+        .top-bar {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.4rem;
+        }
+
+        .nav-links {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-row img.preview-image {
+            max-width: 90%;
+        }
+
+    }
+</style>
+
+<div class="top-bar">
+    <div><strong>RadioAmateurHelper</strong></div>
+    <div>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <form asp-area="Identity" asp-page="/Account/Logout" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-link">Выход (@User.Identity?.Name)</button>
+            </form>
+        }
+        else
+        {
+            <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+        }
+    </div>
+</div>
+
+<h1 class="main-title">Помощник радиолюбителя</h1>
+<div class="description">
+    На этом сайте вы найдете полезные схемы, прошивки, справочную информацию и сможете воспользоваться калькуляторами. Мы также оказываем помощь в ремонте и настройке радиоаппаратуры.
+</div>
+<div class="nav-links">
+    <a href="/Circuits">Сборник схем</a>
+    <a href="/Firmwares">Прошивки</a>
+    <a href="/References">Справочники и документация</a>
+    <div class="dropdown">
+        <a class="dropbtn">Калькуляторы ▾</a>
+        <div class="dropdown-content">
+            <a href="/Calculators/OhmLaw">Закон Ома</a>
+            <a href="/Calculators/LCResonance">LC-резонанс</a>
+            <a href="/Calculators/Divider">Делитель напряжения</a>
+            <a href="/Calculators/Antennas">Расчет антенн</a>
+        </div>
+    </div>
+    <a href="/Components">Каталог компонентов (магазин админа)</a>
+    <a href="/Exchange">Обмен и барахолка</a>
+    <a href="/Simulators">Онлайн-симуляторы</a>
+    <a href="/Blog">Блог и проекты</a>
+    <a href="/Services">Услуги и помощь</a>
+</div>
+
+<div class="image-grid">
+    <a href="/Services">
+        <img class="preview-image" src="/uploads/images/example_home.png" alt="ремонт" />
+    </a>
+    <a href="/Calculators">
+        <img class="preview-image" src="/uploads/images/calculators_home.png" alt="калькуляторы" />
+    </a>
+    <a href="/Simulators">
+        <img class="preview-image" src="/uploads/images/simulators_home.png" alt="Онлайн-симуляторы" />
+    </a>
+    <a href="/Firmwares">
+        <img class="preview-image" src="/uploads/images/firmware_home_1.png" alt="прошивки" />
+    </a>
+    <a href="/References">
+        <img class="preview-image" src="/uploads/images/references_home.png" alt="справочники" />
+    </a>
+    <a href="/Exchange">
+        <img class="preview-image" src="/uploads/images/exchange_home.png" alt="Обмен и барахолка" />
+    </a>
+    <a href="/Circuits">
+        <img class="preview-image" src="/uploads/images/circuit_home.png" alt="схемы" />
+    </a>    
+    <a href="/Blog">
+        <img class="preview-image" src="/uploads/images/blog_home.png" alt="Блог и проекты" />
+    </a>
+    <a href="/Components">
+        <img class="preview-image" src="/uploads/images/components_home.png" alt="Каталог компонентов (магазин админа)" />
+    </a>
+</div>
+
+
+
+

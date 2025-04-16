@@ -1,0 +1,23 @@
+﻿@page
+@model RadioAmateurHelper.Pages.Calculators.DividerModel
+@{
+    ViewData["Title"] = "Делитель напряжения";
+}
+
+<h2>Калькулятор делителя напряжения</h2>
+<form method="post">
+    <label>Напряжение питания (V):</label>
+    <input asp-for="Vin" class="form-control" />
+
+    <label>R1 (Ом):</label>
+    <input asp-for="R1" class="form-control" />
+
+    <label>R2 (Ом):</label>
+    <input asp-for="R2" class="form-control" />
+
+    <button type="submit" class="btn btn-primary mt-2">Рассчитать</button>
+</form>
+@if (Model.Vout != null)
+{
+    <p class="mt-3">Выходное напряжение: <strong>@Model.Vout В</strong></p>
+}

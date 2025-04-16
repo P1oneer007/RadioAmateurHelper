@@ -1,0 +1,26 @@
+﻿@page
+@model RadioAmateurHelper.Pages.ExchangeModel
+@{
+    ViewData["Title"] = "Обмен и барахолка";
+}
+
+<h2>Обмен и барахолка</h2>
+<form method="post">
+    <label>Ваше имя:</label>
+    <input asp-for="Name" class="form-control" />
+
+    <label>Что предлагаете или ищете:</label>
+    <textarea asp-for="Message" class="form-control"></textarea>
+
+    <button type="submit" class="btn btn-success mt-2">Опубликовать</button>
+</form>
+
+@if (Model.Entries.Any())
+{
+    <ul class="mt-4">
+        @foreach (var entry in Model.Entries)
+        {
+            <li><strong>@entry.Name:</strong> @entry.Message</li>
+        }
+    </ul>
+}
