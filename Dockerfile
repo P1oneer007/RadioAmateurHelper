@@ -1,15 +1,20 @@
-# Этап сборки
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+# Используем базовый образ SDK
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
+EXPOSE 80
 
-# Копируем файлы и собираем проект
-COPY . ./
-RUN dotnet publish -c Release -o out
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["RadioAmateurHelper/RadioAmateurHelper.csproj", "RadioAmateurHelper/"]
+RUN dotnet restore "RadioAmateurHelper/RadioAmateurHelper.csproj"
+COPY . .
+WORKDIR "/src/RadioAmateurHelper"
+RUN dotnet build "RadioAmateurHelper.csproj" -c Release -o /app/build
 
-# Этап запуска
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM build AS publish
+RUN dotnet publish "RadioAmateurHelper.csproj" -c Release -o /app/publish
+
+FROM base AS final
 WORKDIR /app
-COPY --from=build /app/out .
-
-# Указываем входную точку
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "RadioAmateurHelper.dll"]
