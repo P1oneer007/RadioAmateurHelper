@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RadioAmateurHelper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5930dbf3f401908d2b2905c01ff46c1660364b8b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+03abda05654c50c4b7e1ac2eba38da7ef34c8916")]
 [assembly: System.Reflection.AssemblyProductAttribute("RadioAmateurHelper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RadioAmateurHelper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
