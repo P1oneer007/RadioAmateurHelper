@@ -1,7 +1,7 @@
 ﻿@page
-@model RadioAmateurHelper.Pages.Admin.ServiceRequestsModel
+@model RadioAmateurHelper.Pages.Admin.IndexModel
 @{
-    ViewData["Title"] = "Заявки на ремонт";
+    ViewData["Title"] = "Панель администратора";
 }
 <style>
     body {
@@ -355,27 +355,19 @@
         }
     }
 </style>
-<h2>Заявки на ремонт</h2>
-@if (Model.Requests.Any())
-{
-    <table class="table">
-        <thead>
-            <tr><th>Имя</th><th>Контакт</th><th>Сообщение</th><th>Дата</th></tr>
-        </thead>
-        <tbody>
-            @foreach (var r in Model.Requests)
-            {
-                <tr>
-                    <td>@r.UserName</td>
-                    <td>@r.Contact</td>
-                    <td>@r.Message</td>
-                    <td>@r.CreatedAt.ToString("g")</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Пока заявок нет.</p>
-}
+<div class="header-overlay">
+    <h1>Панель администратора</h1>
+    <div class="description">
+        Добро пожаловать в административную панель. Здесь вы можете управлять содержимым сайта.
+    </div>
+
+    <div class="nav-links">
+        <a href="/Admin/ServiceRequests">Заявки на ремонт</a>
+        <a href="/Admin/Circuits">Схемы</a>
+        <a href="/Admin/References">Справочники</a>
+        <a href="/Admin/Firmwares">Прошивки</a>
+        <a href="/Admin/Blog">Блог и проекты</a>
+        <a href="/Admin/Users">Пользователи</a>
+        <a href="/Admin/Settings">Настройки</a>
+    </div>
+</div>

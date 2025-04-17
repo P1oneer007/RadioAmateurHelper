@@ -1,0 +1,42 @@
+﻿@page
+@model RadioAmateurHelper.Pages.Blog.EditModel
+@{
+    ViewData["Title"] = "Редактировать запись";
+}
+<div class="header-overlay">
+    <h1>Редактировать запись</h1>
+
+    @if (Model.BlogPost != null)
+    {
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <input type="text" name="Title" value="@Model.BlogPost.Title" class="form-control" placeholder="Заголовок" required />
+            </div>
+
+            <div class="mb-3">
+                <textarea name="Content" class="form-control" rows="10" placeholder="Текст записи" required>@Model.BlogPost.Content</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label>Новое изображение:</label>
+                <input type="file" name="Image" class="form-control" accept="image/*" />
+            </div>
+
+            <div class="mb-3">
+                <label>Новое видео:</label>
+                <input type="file" name="Video" class="form-control" accept="video/*" />
+            </div>
+
+            <div class="mb-3">
+                <label>Новый файл:</label>
+                <input type="file" name="File" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-success">Сохранить изменения</button>
+        </form>
+    }
+    else
+    {
+        <p>Запись не найдена.</p>
+    }
+</div>

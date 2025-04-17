@@ -1,7 +1,7 @@
 ﻿@page
-@model RadioAmateurHelper.Pages.Admin.ServiceRequestsModel
+@model RadioAmateurHelper.Pages.Admin.FirmwaresModel
 @{
-    ViewData["Title"] = "Заявки на ремонт";
+    ViewData["Title"] = "Прошивки";
 }
 <style>
     body {
@@ -355,27 +355,7 @@
         }
     }
 </style>
-<h2>Заявки на ремонт</h2>
-@if (Model.Requests.Any())
-{
-    <table class="table">
-        <thead>
-            <tr><th>Имя</th><th>Контакт</th><th>Сообщение</th><th>Дата</th></tr>
-        </thead>
-        <tbody>
-            @foreach (var r in Model.Requests)
-            {
-                <tr>
-                    <td>@r.UserName</td>
-                    <td>@r.Contact</td>
-                    <td>@r.Message</td>
-                    <td>@r.CreatedAt.ToString("g")</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Пока заявок нет.</p>
-}
+<div class="header-overlay">
+    <h1>Прошивки</h1>
+    <p>Управление файлами прошивок.</p>
+</div>

@@ -13,12 +13,37 @@
 
     .top-bar {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 1rem;
-        border-bottom: 1px solid #ddd;
-        font-size: 0.95rem;
+        justify-content: flex-end;
+        padding: 10px 20px;
+        margin-bottom: 20px;
     }
+
+    .top-bar-buttons {
+        display: flex;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 6px 14px;
+        border-radius: 12px;
+        align-items: center;
+    }
+
+        .top-bar-buttons a {
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .top-bar-buttons a:hover {
+                background-color: #e0e0e0;
+                color: #004499;
+            }
+
+
 
     .main-title {
         text-align: center;
@@ -335,8 +360,12 @@
 </style>
 
 <div class="top-bar">
-    <div><strong> </strong></div>
-    <div>
+    <div class="top-bar-buttons">
+        @* Добавляем пункт Админка только для нужного Email *@
+        @if (User.Identity?.IsAuthenticated == true && User.Identity.Name == "Leka-07@bk.ru")
+        {
+            <a href="/Admin">Админка</a>
+        }
         @if (SignInManager.IsSignedIn(User))
         {
             <form asp-area="Identity" asp-page="/Account/Logout" method="post" style="display:inline;">
@@ -373,6 +402,7 @@
             <a href="/Simulators">Онлайн-симуляторы</a>
             <a href="/Blog">Блог и проекты</a>
             <a href="/Services">Услуги и помощь</a>
+            
         </div>
     </div>
 </div>
