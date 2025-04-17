@@ -14,6 +14,9 @@ namespace RadioAmateurHelper.Pages.Firmwares
 
         public List<FirmwareModel> Firmwares { get; set; }
 
-        public async Task OnGetAsync() => Firmwares = await _context.Firmwares.ToListAsync();
+        public void OnGet()
+        {
+            Firmwares = _context.Firmwares.OrderByDescending(f => f.UploadedAt).ToList();
+        }
     }
 }

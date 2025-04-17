@@ -2,17 +2,30 @@
 
 namespace RadioAmateurHelper.Models
 {
-    public class ComponentModel
-    {
-        public int Id { get; set; }
+	public class ComponentModel
+	{
+		public int Id { get; set; }
 
-        [Required]
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string Description { get; set; }
-    }
+		[Required]
+		public string Name { get; set; }
 
-    public static class ComponentDataStore
+		[Required]
+		public string Type { get; set; }
+
+		public string Description { get; set; }
+		public string Characteristics { get; set; }
+
+		[Required]
+		public decimal Price { get; set; }
+
+		[Required]
+		public int Stock { get; set; }
+
+		public string? ImageUrl { get; set; }
+		public string? SchematicSymbolUrl { get; set; }
+	}
+
+	public static class ComponentDataStore
     {
         public static List<ComponentModel> All => new()
         {

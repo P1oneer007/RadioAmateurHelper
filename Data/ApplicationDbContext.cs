@@ -15,7 +15,7 @@ namespace RadioAmateurHelper.Data
         public DbSet<CalculatorHistory> CalculatorHistories { get; set; }
         public DbSet<ExchangeEntry> ExchangeEntries { get; set; }
         public DbSet<BlogPost> BlogPosts { get; set; }
-        public DbSet<ComponentModel> ComponentModels { get; set; }
+        public DbSet<ComponentModel> Components { get; set; }
 
     }
 }

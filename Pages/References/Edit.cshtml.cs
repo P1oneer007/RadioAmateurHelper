@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using RadioAmateurHelper.Data;
-using System.Threading.Tasks;
 using RadioAmateurHelper.Models;
 
 namespace RadioAmateurHelper.Pages.References
 {
-    public class CreateModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public CreateModel(ApplicationDbContext context)
+        public EditModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -18,8 +18,12 @@ namespace RadioAmateurHelper.Pages.References
         [BindProperty]
         public ReferenceModel Entry { get; set; }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGetAsync(int id)
         {
+            Entry = await _context.References.FindAsync(id);
+            if (Entry == null)
+                return NotFound();
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -27,7 +31,7 @@ namespace RadioAmateurHelper.Pages.References
             if (!ModelState.IsValid)
                 return Page();
 
-            _context.References.Add(Entry);
+            _context.Attach(Entry).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

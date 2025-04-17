@@ -122,14 +122,35 @@
 
 </style>
 <div class="header-overlay">
-    <h2>Сборник схем</h2>
+    <h2>Справочная информация</h2>
+    <p>Здесь собраны таблицы, формулы и другая полезная справочная информация.</p>
 
-<h2>Справочная информация</h2>
-<p>Здесь собраны таблицы, формулы и другая полезная справочная информация.</p>
-<ul>
-    @foreach (var item in Model.Entries)
+    <div class="mb-4">
+        <a class="btn btn-success" href="/References/Create">Добавить справку</a>
+    </div>
+
+    @if (Model.Entries != null && Model.Entries.Any())
     {
-        <li><strong>@item.Title</strong><br /><p>@item.Content</p></li>
+        <div class="row">
+            @foreach (var item in Model.Entries)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">@item.Content</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a class="btn btn-warning btn-sm" href="/References/Edit?id=@item.Id">Редактировать</a>
+                            <a class="btn btn-danger btn-sm" href="/References/Delete?id=@item.Id">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     }
-</ul>
+    else
+    {
+        <p>Пока справок нет.</p>
+    }
 </div>

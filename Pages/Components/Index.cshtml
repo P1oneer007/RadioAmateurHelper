@@ -121,24 +121,54 @@
 }
 
 </style>
-<div class="header-overlay">
-<h2>Каталог электронных компонентов</h2>
-<form method="get">
-    <input asp-for="SearchTerm" placeholder="Введите название или маркировку..." class="form-control mb-3" />
-    <button type="submit" class="btn btn-outline-primary">Поиск</button>
-</form>
 
-<table class="table mt-3">
-    <thead><tr><th>Наименование</th><th>Тип</th><th>Описание</th></tr></thead>
-    <tbody>
-        @foreach (var c in Model.Results)
-        {
-            <tr>
-                <td>@c.Name</td>
-                <td>@c.Type</td>
-                <td>@c.Description</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="header-overlay">
+    <h2>Каталог электронных компонентов</h2>
+
+    <form method="get" class="mb-4">
+        <input asp-for="SearchTerm" placeholder="Введите название или тип..." class="form-control mb-3" />
+        <button type="submit" class="btn btn-outline-primary">Поиск</button>
+        <a class="btn btn-success ms-2" href="/Components/Create">Добавить компонент</a>
+    </form>
+
+    @if (Model.Results.Any())
+    {
+        <div class="row">
+            @foreach (var c in Model.Results)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        @if (!string.IsNullOrEmpty(c.ImageUrl))
+                        {
+                            <img src="@c.ImageUrl" class="card-img-top" alt="@c.Name" style="height: 200px; object-fit: contain;">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@c.Name</h5>
+                            <p class="card-text"><strong>Тип:</strong> @c.Type</p>
+                            <p class="card-text"><strong>Цена:</strong> @c.Price.ToString("C")</p>
+                            <p class="card-text"><strong>Наличие:</strong> @c.Stock шт.</p>
+                            @if (!string.IsNullOrEmpty(c.Characteristics))
+                            {
+                                <p class="card-text"><strong>Характеристики:</strong> @c.Characteristics</p>
+                            }
+                        </div>
+                        @if (!string.IsNullOrEmpty(c.SchematicSymbolUrl))
+                        {
+                            <div class="p-2 text-center">
+                                <img src="@c.SchematicSymbolUrl" alt="Символ" style="max-height: 80px;">
+                            </div>
+                        }
+                        <div class="card-footer">
+                            <a class="btn btn-warning btn-sm" href="/Components/Edit/@c.Id">Редактировать</a>
+                            <a class="btn btn-danger btn-sm ms-2" href="/Components/Delete?id=@c.Id">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>Компоненты не найдены.</p>
+    }
 </div>

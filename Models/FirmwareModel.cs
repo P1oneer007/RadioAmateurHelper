@@ -9,9 +9,9 @@ namespace RadioAmateurHelper.Models
         [Required]
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public string FilePath { get; set; }
+        public string? FilePath { get; set; }
 
         public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
     }

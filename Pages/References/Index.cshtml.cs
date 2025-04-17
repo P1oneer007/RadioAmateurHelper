@@ -14,6 +14,9 @@ namespace RadioAmateurHelper.Pages.References
 
         public List<ReferenceModel> Entries { get; set; }
 
-        public async Task OnGetAsync() => Entries = await _context.References.ToListAsync();
+        public void OnGet()
+        {
+            Entries = _context.References.OrderByDescending(r => r.CreatedAt).ToList();
+        }
     }
 }

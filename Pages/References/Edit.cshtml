@@ -1,11 +1,11 @@
 ﻿@page
-@model RadioAmateurHelper.Pages.References.CreateModel
+@model RadioAmateurHelper.Pages.References.EditModel
 @{
 }
-
-<h2>Добавить справку</h2>
+<h2>Редактировать справку</h2>
 
 <form method="post">
+    <input type="hidden" asp-for="Entry.Id" />
     <div class="form-group">
         <label asp-for="Entry.Title"></label>
         <input asp-for="Entry.Title" class="form-control" />
@@ -14,5 +14,5 @@
         <label asp-for="Entry.Content"></label>
         <textarea asp-for="Entry.Content" class="form-control"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary mt-3">Создать</button>
+    <button type="submit" class="btn btn-success mt-3">Сохранить</button>
 </form>

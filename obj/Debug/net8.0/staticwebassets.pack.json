@@ -245,6 +245,18 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\Firmwares\\.gitignore",
+      "PackagePath": "staticwebassets\\uploads\\Firmwares\\.gitignore"
+    },
+    {
+      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\Firmwares\\2024-09-17_09-37-51.png",
+      "PackagePath": "staticwebassets\\uploads\\Firmwares\\2024-09-17_09-37-51.png"
+    },
+    {
+      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\components\\2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\components\\2.jpg"
+    },
+    {
       "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\background_image.png",
       "PackagePath": "staticwebassets\\uploads\\images\\background_image.png"
     },

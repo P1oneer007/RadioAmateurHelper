@@ -122,16 +122,17 @@
 
 </style>
 <div class="header-overlay">
-<h2>Прошивки</h2>
-<p>В этом разделе вы можете найти и скачать прошивки для различных микроконтроллеров.</p>
-<ul>
-    @foreach (var fw in Model.Firmwares)
-    {
-        <li>
-            <strong>@fw.Name</strong><br />
-            <p>@fw.Description</p>
-            <a href="@fw.FilePath" download>Скачать</a>
-        </li>
-    }
-</ul>
+    <h1>Прошивки</h1>
+    <a class="btn btn-success mb-3" href="/Firmwares/Create">Добавить прошивку</a>
+    <ul>
+        @foreach (var fw in Model.Firmwares)
+        {
+            <li>
+                <strong>@fw.Name</strong> - @fw.Description <br />
+                <a href="@fw.FilePath" download>Скачать</a> |
+                <a class="btn btn-primary btn-sm" href="/Firmwares/Edit?id=@fw.Id">Редактировать</a> |
+                <a class="btn btn-danger btn-sm" href="/Firmwares/Delete?id=@fw.Id">Удалить</a>
+            </li>
+        }
+    </ul>
 </div>

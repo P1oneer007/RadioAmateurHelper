@@ -1,7 +1,7 @@
-﻿@page "{id:int}"
-@model RadioAmateurHelper.Pages.Components.EditModel
+﻿@page
+@model RadioAmateurHelper.Pages.Firmwares.EditModel
 @{
-    ViewData["Title"] = "Редактировать компонент";
+    ViewData["Title"] = "Редактировать прошивку";
 }
 <style>
     body {
@@ -355,55 +355,27 @@
         }
     }
 </style>
-
 <div class="header-overlay">
-    <h2>Редактировать компонент</h2>
-
-    @if (Model.Component != null)
-    {
-        <form method="post" enctype="multipart/form-data">
-            <input type="hidden" asp-for="Component.Id" />
-
-            <input asp-for="Component.Name" class="form-control mb-3" placeholder="Наименование" required />
-            <input asp-for="Component.Type" class="form-control mb-3" placeholder="Тип" required />
-            <input asp-for="Component.Price" type="number" step="0.01" class="form-control mb-3" placeholder="Цена" required />
-            <input asp-for="Component.Stock" type="number" class="form-control mb-3" placeholder="Наличие (шт.)" required />
-
-            <textarea asp-for="Component.Description" class="form-control mb-3" placeholder="Описание" rows="3"></textarea>
-            <textarea asp-for="Component.Characteristics" class="form-control mb-3" placeholder="Характеристики" rows="3"></textarea>
-
-            @if (!string.IsNullOrEmpty(Model.Component.ImageUrl))
-            {
-                <div class="mb-3">
-                    <img src="@Model.Component.ImageUrl" alt="Изображение" class="img-thumbnail mb-2" style="max-height: 150px;" />
-                    <button type="submit" name="DeleteImage" value="true" class="btn btn-danger btn-sm">Удалить изображение</button>
-                </div>
-            }
-
-            <div class="mb-3">
-                <label>Новое изображение:</label>
-                <input type="file" name="Image" class="form-control" accept="image/*" />
-            </div>
-
-            @if (!string.IsNullOrEmpty(Model.Component.SchematicSymbolUrl))
-            {
-                <div class="mb-3">
-                    <img src="@Model.Component.SchematicSymbolUrl" alt="Символ" class="img-thumbnail mb-2" style="max-height: 100px;" />
-                    <button type="submit" name="DeleteSymbol" value="true" class="btn btn-danger btn-sm">Удалить символ</button>
-                </div>
-            }
-
-            <div class="mb-3">
-                <label>Новый символ на схеме:</label>
-                <input type="file" name="SchematicSymbol" class="form-control" accept="image/*" />
-            </div>
-
-            <button type="submit" class="btn btn-success">Сохранить изменения</button>
-            <a href="/Components" class="btn btn-secondary ms-2">Отмена</a>
-        </form>
-    }
-    else
-    {
-        <p>Компонент не найден.</p>
-    }
+    <h1>Редактировать прошивку</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Firmware.Id" />
+        <div class="form-group">
+            <label>Название</label>
+            <input asp-for="Firmware.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Описание</label>
+            <textarea asp-for="Firmware.Description" class="form-control"></textarea>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.Firmware.FilePath))
+        {
+            <p>Текущий файл: <a href="@Model.Firmware.FilePath" download>Скачать</a></p>
+        }
+        <div class="form-group">
+            <label>Заменить файл</label>
+            <input asp-for="UploadFile" type="file" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <a href="/Firmwares" class="btn btn-secondary">Назад</a>
+    </form>
 </div>
