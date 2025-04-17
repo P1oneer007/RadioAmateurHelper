@@ -183,3 +183,4 @@ D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\
 D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\references_home.png
 D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\simulators_home.png
 D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\blinker.png
+D:\data\music\сайты\RadioAmateurHelper\RadioAmateurHelper\bin\Debug\net8.0\uploads\images\background_image.png

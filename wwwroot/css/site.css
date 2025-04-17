@@ -18,5 +18,35 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    color: #111;
+    font-weight: 500;
+
+    margin-bottom: 60px;
+    background-color: #f5f5f5; /* основной светло-серый цвет */
+    background-image: url("/uploads/images/background_image_2.png"); /* путь к картинке */
+    background-repeat: repeat; /* повторяем рисунок */
+    background-size: 400px 400px; /* размер плитки, можно подогнать */
+    background-attachment: fixed; /* чтобы фон не двигался при прокрутке */
 }
+a {
+    color: #0066cc; /* Чуть более насыщенный синий */
+    font-weight: 400; /* Чуть толще */
+    text-decoration: underline; /* Обязательно подчёркивание */
+}
+
+    a:hover {
+        color: #004499; /* Темнее при наведении */
+    }
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 200px;
+         background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255,255,255,0));
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    body > * {
+        position: relative;
+        z-index: 1;
+    }

@@ -130,11 +130,21 @@
     .nav-links a:hover,
     .dropdown:hover .dropbtn {
         background-color: #f0f0f0;
+
     }
 
     .dropdown {
         position: relative;
         display: inline-block;
+
+    }
+
+    .dropdown-menu {
+        background-color: rgba(255, 255, 255, 0.95) !important; /* почти белый фон */
+        backdrop-filter: none !important; /* отключить размытие внутри меню */
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* лёгкая тень для отделения */
+        border-radius: 8px; /* скругление углов */
     }
 
     .dropbtn {
@@ -147,27 +157,159 @@
     .dropdown-content {
         display: none;
         position: absolute;
+        top: 100%; /* сразу под кнопкой */
+        left: 0;
         background-color: #ffffff;
         min-width: 200px;
         box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-        z-index: 1;
+        z-index: 999;
+        border-radius: 8px;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
 
-    .dropdown-content a {
-        color: black;
-        padding: 10px 12px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-    }
+        .dropdown-content a {
+            color: black;
+            padding: 10px 12px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
 
-    .dropdown-content a:hover {
-        background-color: #f5f5f5;
-    }
+            .dropdown-content a:hover {
+                background-color: #f5f5f5;
+            }
 
     .dropdown:hover .dropdown-content {
         display: block;
     }
+
+    .header-overlay {
+    position: relative;
+    overflow: visible;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 30px 40px; /* внутренние отступы */
+    margin: 20px auto; /* центрируем */
+    max-width: 1200px; /* чтобы ровно с карточками */
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Плавное размытие */
+.header-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 100%);
+    pointer-events: none;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* Заголовок */
+.header-overlay h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Описание */
+.header-overlay .description {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Навигация */
+.header-overlay .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header-overlay .nav-links a {
+    color: #0066cc;
+    text-decoration: none;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 8px;
+    transition: background 0.3s;
+    font-weight: 500;
+}
+
+.header-overlay .nav-links a:hover {
+    background: rgba(240,240,240,1);
+}
+
+/* Выпадающий список */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 999;
+    border-radius: 8px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 12px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Адаптивность для маленьких экранов */
+@@media (max-width: 768px) {
+    .header-overlay {
+        padding: 20px;
+        margin: 10px auto;
+        max-width: 90%;
+    }
+
+    .header-overlay h1 {
+        font-size: 1.5rem;
+    }
+
+    .header-overlay .description {
+        font-size: 0.9rem;
+    }
+
+    .header-overlay .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown-content {
+        min-width: 160px;
+    }
+}
+
+
+
+
+    .header-content {
+        position: relative;
+        z-index: 1;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
 
     @@media (max-width: 600px) {
         .main-title {
@@ -193,7 +335,7 @@
 </style>
 
 <div class="top-bar">
-    <div><strong>RadioAmateurHelper</strong></div>
+    <div><strong> </strong></div>
     <div>
         @if (SignInManager.IsSignedIn(User))
         {
@@ -207,30 +349,34 @@
         }
     </div>
 </div>
-
-<h1 class="main-title">Помощник радиолюбителя</h1>
-<div class="description">
-    На этом сайте вы найдете полезные схемы, прошивки, справочную информацию и сможете воспользоваться калькуляторами. Мы также оказываем помощь в ремонте и настройке радиоаппаратуры.
-</div>
-<div class="nav-links">
-    <a href="/Circuits">Сборник схем</a>
-    <a href="/Firmwares">Прошивки</a>
-    <a href="/References">Справочники и документация</a>
-    <div class="dropdown">
-        <a class="dropbtn">Калькуляторы ▾</a>
-        <div class="dropdown-content">
-            <a href="/Calculators/OhmLaw">Закон Ома</a>
-            <a href="/Calculators/LCResonance">LC-резонанс</a>
-            <a href="/Calculators/Divider">Делитель напряжения</a>
-            <a href="/Calculators/Antennas">Расчет антенн</a>
+<div class="header-overlay">
+    <div class="header-content">
+        <h1 class="main-title">Помощник радиолюбителя</h1>
+        <div class="description">
+            На этом сайте вы найдете полезные схемы, прошивки, справочную информацию и сможете воспользоваться калькуляторами. Мы также оказываем помощь в ремонте и настройке радиоаппаратуры.
+        </div>
+        <div class="nav-links">
+            <a href="/Circuits">Сборник схем</a>
+            <a href="/Firmwares">Прошивки</a>
+            <a href="/References">Справочники и документация</a>
+            <div class="dropdown">
+                <a class="dropbtn">Калькуляторы ▾</a>
+                <div class="dropdown-content">
+                    <a href="/Calculators/OhmLaw">Закон Ома</a>
+                    <a href="/Calculators/LCResonance">LC-резонанс</a>
+                    <a href="/Calculators/Divider">Делитель напряжения</a>
+                    <a href="/Calculators/Antennas">Расчет антенн</a>
+                </div>
+            </div>
+            <a href="/Components">Каталог компонентов (магазин админа)</a>
+            <a href="/Exchange">Обмен и барахолка</a>
+            <a href="/Simulators">Онлайн-симуляторы</a>
+            <a href="/Blog">Блог и проекты</a>
+            <a href="/Services">Услуги и помощь</a>
         </div>
     </div>
-    <a href="/Components">Каталог компонентов (магазин админа)</a>
-    <a href="/Exchange">Обмен и барахолка</a>
-    <a href="/Simulators">Онлайн-симуляторы</a>
-    <a href="/Blog">Блог и проекты</a>
-    <a href="/Services">Услуги и помощь</a>
 </div>
+
 
 <div class="image-grid">
     <a href="/Services">

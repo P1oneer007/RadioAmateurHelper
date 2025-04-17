@@ -23,6 +23,7 @@
     <None Remove="uploads\example_home.png" />
     <None Remove="uploads\exchange_home.png" />
     <None Remove="uploads\firmware_home_1.png" />
+    <None Remove="uploads\images\background_image.png" />
     <None Remove="uploads\images\blinker.png" />
     <None Remove="uploads\references_home.png" />
     <None Remove="uploads\simulators_home.png" />
@@ -40,6 +41,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="uploads\images\background_image.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Update="uploads\images\blinker.png">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
