@@ -1,18 +1,25 @@
 ﻿@page
+<!-- Директива Razor Pages: указывает, что этот файл является конечной точкой и доступен напрямую по URL -->
 @model ErrorModel
+<!-- Устанавливает тип модели страницы — связана с классом ErrorModel в C# -->
 @{
     ViewData["Title"] = "Error";
+    // Устанавливает заголовок страницы (отображается в <title> внутри _Layout.cshtml)
 }
 
 <h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<!-- Красный заголовок первого уровня — сообщает, что произошла ошибка -->
 
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+<!-- Дополнительное сообщение об ошибке -->
 @if (Model.ShowRequestId)
 {
     <p>
         <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        <!-- Если есть RequestId, выводится его значение в виде кода -->
     </p>
 }
+<!-- RequestId помогает отследить конкретный запрос, вызвавший ошибку -->
 
 <h3>Development Mode</h3>
 <p>
@@ -24,3 +31,4 @@
     For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
     and restarting the app.
 </p>
+<!-- Информационное сообщение для разработчика: объяснение, как включить подробные сообщения об ошибке -->

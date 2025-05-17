@@ -1,308 +1,316 @@
 {
   "Files": [
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\RadioAmateurHelper.bundle.scp.css",
-      "PackagePath": "staticwebassets\\RadioAmateurHelper.bundle.scp.css"
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\RadioAmateurHelper.bundle.scp.css",
+      "PackagePath": "staticwebassets\\RadioAmateurHelper.ujzkrllwj2.bundle.scp.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\Firmwares\\.gitignore",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\Firmwares\\.gitignore",
       "PackagePath": "staticwebassets\\uploads\\Firmwares\\.gitignore"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\Firmwares\\2024-09-17_09-37-51.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\Firmwares\\2024-09-17_09-37-51.png",
       "PackagePath": "staticwebassets\\uploads\\Firmwares\\2024-09-17_09-37-51.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\components\\2.jpg",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\Firmwares\\i205LR54_v7_4.bin",
+      "PackagePath": "staticwebassets\\uploads\\Firmwares\\i205LR54_v7_4.bin"
+    },
+    {
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\components\\2.jpg",
       "PackagePath": "staticwebassets\\uploads\\components\\2.jpg"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\background_image.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\background_image.png",
       "PackagePath": "staticwebassets\\uploads\\images\\background_image.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\background_image_2.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\background_image_2.png",
       "PackagePath": "staticwebassets\\uploads\\images\\background_image_2.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\blinker.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\blinker.png",
       "PackagePath": "staticwebassets\\uploads\\images\\blinker.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\blog_home.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\blog_home.png",
       "PackagePath": "staticwebassets\\uploads\\images\\blog_home.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\calculators_home.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\calculators_home.png",
       "PackagePath": "staticwebassets\\uploads\\images\\calculators_home.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\circuit_home.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\circuit_home.png",
       "PackagePath": "staticwebassets\\uploads\\images\\circuit_home.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\components_home.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\components_home.png",
       "PackagePath": "staticwebassets\\uploads\\images\\components_home.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\example_home.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\example_home.png",
       "PackagePath": "staticwebassets\\uploads\\images\\example_home.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\exchange_home.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\exchange_home.png",
       "PackagePath": "staticwebassets\\uploads\\images\\exchange_home.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\firmware_home_1.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\firmware_home_1.png",
       "PackagePath": "staticwebassets\\uploads\\images\\firmware_home_1.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\references_home.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\references_home.png",
       "PackagePath": "staticwebassets\\uploads\\images\\references_home.png"
     },
     {
-      "Id": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\simulators_home.png",
+      "Id": "C:\\Users\\root\\source\\repos\\RadioAmateurHelper\\RadioAmateurHelper\\wwwroot\\uploads\\images\\simulators_home.png",
       "PackagePath": "staticwebassets\\uploads\\images\\simulators_home.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.RadioAmateurHelper.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.RadioAmateurHelper.Microsoft.AspNetCore.StaticWebAssets.props",

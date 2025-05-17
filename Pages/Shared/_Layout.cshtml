@@ -1,55 +1,100 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<!-- Указывает, что используется HTML5 -->
+
+<html lang="en"> <!-- ru -->
+<!-- Открывает HTML-документ и задаёт язык страницы (английский) -->
+
 <head>
     <meta charset="utf-8" />
+    <!-- Устанавливает кодировку UTF-8 для корректного отображения символов -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Настраивает адаптивность: ширина экрана равна ширине устройства, начальный масштаб 1 -->
+
     <title>@ViewData["Title"] - RadioAmateurHelper</title>
-	<!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
+    <!-- Устанавливает заголовок страницы, комбинируя значение ViewData["Title"] и имя сайта -->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-" crossorigin="anonymous">
+    <!-- Подключает Bootstrap CSS с CDN для стилизации и адаптивной вёрстки -->
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- Подключает собственные стили сайта; asp-append-version добавляет хэш в URL для кэширования -->
+
     <link rel="stylesheet" href="~/RadioAmateurHelper.styles.css" asp-append-version="true" />
-    
+    <!-- Автоматически сгенерированные стили (обычно от Razor CSS Isolation или Blazor) -->
 
 </head>
+
 <body>
     <header>
+        <!-- Заголовок страницы: включает навигационную панель -->
+
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <!-- Навигационная панель с Bootstrap-классами для адаптивности и внешнего вида -->
+
             <div class="container">
+                <!-- Контейнер-обёртка для выравнивания содержимого -->
+
                 <a class="navbar-brand" asp-area="" asp-page="/Index">RadioAmateurHelper</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Название сайта, ссылающееся на главную страницу (Razor Pages) -->
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <!-- Кнопка для открытия меню на мобильных устройствах -->
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <!-- Блок с навигационными ссылками, скрыт на малых экранах -->
+
                     <ul class="navbar-nav flex-grow-1">
+                        <!-- Список ссылок навигации -->
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <!-- Ссылка на главную страницу -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <!-- Ссылка на страницу политики конфиденциальности -->
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
+        <!-- Основной контейнер контента страницы -->
+
         <main role="main" class="pb-3">
             @RenderBody()
+            <!-- Вставляет содержимое Razor Pages или Views, подключённых к этому layout -->
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
+        <!-- Нижний колонтитул страницы -->
+
         <div class="container">
             &copy; 2025 - RadioAmateurHelper - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <!-- Авторские права и повторная ссылка на страницу конфиденциальности -->
         </div>
     </footer>
 
+    <!-- Подключение скриптов -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Локальное подключение jQuery (используется для Bootstrap и других скриптов) -->
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Локальный Bootstrap JS (bundle включает Popper.js) -->
+
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Скрипты сайта, с version-хэшем для кэширования -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-" crossorigin="anonymous"></script>
+    <!-- Подключение Bootstrap JS через CDN (дублируется с локальной версией выше) -->
     @await RenderSectionAsync("Scripts", required: false)
+    <!-- Позволяет дочерним страницам подключать дополнительные скрипты -->
 </body>
 </html>

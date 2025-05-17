@@ -1,15 +1,18 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using RadioAmateurHelper.Models
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
+﻿@using Microsoft.AspNetCore.Identity                  // Подключение пространства имён для Identity
+@using RadioAmateurHelper.Models                      // Подключение модели пользователя (User)
+@inject SignInManager<User> SignInManager             // Внедрение сервиса для проверки входа/выхода пользователя
+@inject UserManager<User> UserManager                 // Внедрение сервиса для управления пользователями
 
-@if (SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User))                 // Проверка: пользователь вошёл в систему?
 {
     <form asp-area="Identity" asp-page="/Account/Logout" method="post">
+        <!-- Форма выхода. Отправляется POST-запрос на страницу /Account/Logout -->
         <button type="submit">Выход (@User.Identity?.Name)</button>
+        <!-- Кнопка выхода. Показывает имя текущего пользователя -->
     </form>
 }
 else
 {
     <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+    <!-- Ссылка на страницу входа -->
 }

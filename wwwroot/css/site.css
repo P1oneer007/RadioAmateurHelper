@@ -1,52 +1,312 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
+/* На больших экранах увеличиваем базовый размер шрифта */
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Стили для фокуса на кнопках и input'ах */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+/* Минимальная высота страницы, чтобы футер не перекрывался */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
+/* Глобальные стили для <body> */
 body {
-    color: #111;
-    font-weight: 500;
+    color: #111; /* Цвет текста */
+    font-weight: 500; /* Толщина шрифта */
+    margin-bottom: 60px; /* Отступ внизу (для футера) */
 
-    margin-bottom: 60px;
-    background-color: #f5f5f5; /* основной светло-серый цвет */
-    background-image: url("/uploads/images/background_image_2.png"); /* путь к картинке */
-    background-repeat: repeat; /* повторяем рисунок */
-    background-size: 400px 400px; /* размер плитки, можно подогнать */
-    background-attachment: fixed; /* чтобы фон не двигался при прокрутке */
+    background-color: #f5f5f5; /* Светлый серый фон */
+    background-image: url("/uploads/images/background_image_2.png"); /* Фоновая картинка */
+    background-repeat: repeat; /* Повтор изображения плиткой */
+    background-size: 400px 400px; /* Размер плитки */
+    background-attachment: fixed; /* Фон остаётся на месте при прокрутке */
 }
+
+/* Стили ссылок */
 a {
-    color: #0066cc; /* Чуть более насыщенный синий */
-    font-weight: 400; /* Чуть толще */
-    text-decoration: underline; /* Обязательно подчёркивание */
+    color: #0066cc;
+    font-weight: 400;
+    text-decoration: underline;
 }
 
     a:hover {
-        color: #004499; /* Темнее при наведении */
-    }
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 200px;
-         background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255,255,255,0));
-        pointer-events: none;
-        z-index: 0;
+        color: #004499;
     }
 
-    body > * {
-        position: relative;
-        z-index: 1;
+/* Градиент сверху — создаёт красивый "засвет" */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255,255,255,0));
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Всё содержимое выше градиента */
+body > * {
+    position: relative;
+    z-index: 1;
+}
+body {
+    font-family: sans-serif;
+}
+
+/* Верхняя панель входа/выхода и админки */
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.top-bar-buttons {
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 6px 14px;
+    border-radius: 12px;
+    align-items: center;
+}
+
+    .top-bar-buttons a {
+        text-decoration: none;
+        color: #0066cc;
+        font-weight: 500;
+        padding: 6px 10px;
+        border-radius: 8px;
+        transition: background-color 0.3s, color 0.3s;
     }
+
+        .top-bar-buttons a:hover {
+            background-color: #e0e0e0;
+            color: #004499;
+        }
+
+/* === Заголовок и описание === */
+.main-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 20px 0 10px 0;
+}
+
+.description {
+    text-align: center;
+    font-size: 0.95rem;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    padding: 0 1rem;
+}
+
+/* === Навигация по разделам === */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+    .nav-links a {
+        text-decoration: none;
+        color: #0066cc;
+        padding: 6px 12px;
+        border-radius: 5px;
+        transition: background-color 0.2s;
+    }
+
+        .nav-links a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #f0f0f0;
+        }
+
+/* === Выпадающее меню === */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 999;
+    border-radius: 8px;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 10px 12px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* === Блок "glassmorphism" с размытой подложкой === */
+.header-overlay {
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 30px 40px;
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1;
+}
+
+    .header-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(ellipse at center, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 100%);
+        pointer-events: none;
+        border-radius: 20px;
+        z-index: -1;
+    }
+
+    .header-overlay h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .header-overlay .description {
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .header-overlay .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+        .header-overlay .nav-links a {
+            color: #0066cc;
+            text-decoration: none;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+            .header-overlay .nav-links a:hover {
+                background: rgba(240,240,240,1);
+            }
+
+/* === Галерея изображений === */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 1800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+    .image-grid a {
+        text-decoration: none;
+    }
+
+/* Карточки с изображениями */
+.preview-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out;
+    margin: 0 auto 25px auto;
+}
+
+    .preview-image:hover {
+        transform: scale(1.02);
+    }
+
+/* === Адаптивность === */
+@@media (max-width: 768px) {
+    .header-overlay {
+        padding: 20px;
+        margin: 10px auto;
+        max-width: 90%;
+    }
+
+        .header-overlay h1 {
+            font-size: 1.5rem;
+        }
+
+        .header-overlay .description {
+            font-size: 0.9rem;
+        }
+
+        .header-overlay .nav-links {
+            flex-direction: column;
+            align-items: center;
+        }
+
+    .dropdown-content {
+        min-width: 160px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+    }
+
+    .main-title {
+        font-size: 1.4rem;
+    }
+
+    .image-row img.preview-image {
+        max-width: 90%;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}

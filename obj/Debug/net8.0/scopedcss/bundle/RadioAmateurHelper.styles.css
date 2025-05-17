@@ -1,49 +1,63 @@
 /* _content/RadioAmateurHelper/Pages/Shared/_Layout.cshtml.rz.scp.css */
-/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+/* 
+  Документация по бандлингу и минификации:
+  https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification 
+  Используется для объединения и сжатия CSS/JS для оптимизации производительности.
+*/
 
+/* Стили для логотипа/названия сайта в навбаре */
 a.navbar-brand[b-qehje3yf7b] {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal; /* Разрешает перенос строк внутри текста */
+    text-align: center; /* Центрирует текст */
+    word-break: break-all; /* Позволяет разрывать слова при переносе */
 }
 
+/* Общий стиль для всех ссылок */
 a[b-qehje3yf7b] {
-  color: #0077cc;
+    color: #0077cc; /* Синий цвет ссылок */
 }
 
+/* Кнопка с классом .btn-primary */
 .btn-primary[b-qehje3yf7b] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff; /* Белый текст */
+    background-color: #1b6ec2; /* Синий фон */
+    border-color: #1861ac; /* Чуть более тёмный синий цвет рамки */
 }
 
-.nav-pills .nav-link.active[b-qehje3yf7b], .nav-pills .show > .nav-link[b-qehje3yf7b] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+/* Активная вкладка навигации (используется в .nav-pills) */
+.nav-pills .nav-link.active[b-qehje3yf7b],
+.nav-pills .show > .nav-link[b-qehje3yf7b] {
+    color: #fff; /* Белый текст */
+    background-color: #1b6ec2; /* Тот же синий фон */
+    border-color: #1861ac; /* Цвет рамки как у .btn-primary */
 }
 
+/* Верхняя граница (используется, например, в футере) */
 .border-top[b-qehje3yf7b] {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5; /* Светло-серая граница сверху */
 }
+
+/* Нижняя граница */
 .border-bottom[b-qehje3yf7b] {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5; /* Светло-серая граница снизу */
 }
 
+/* Тень под элементом */
 .box-shadow[b-qehje3yf7b] {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); /* Лёгкая тень снизу */
 }
 
+/* Кнопка принятия политики (например, cookie policy) */
 button.accept-policy[b-qehje3yf7b] {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem; /* Размер шрифта — 16px */
+    line-height: inherit; /* Использует line-height родителя */
 }
 
+/* Стили футера */
 .footer[b-qehje3yf7b] {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: absolute; /* Позиционируется относительно ближайшего позиционированного родителя */
+    bottom: 0; /* Притянут к нижнему краю контейнера */
+    width: 100%; /* Растягивается на всю ширину */
+    white-space: nowrap; /* Запрещает перенос строк */
+    line-height: 60px; /* Высота строки (делает футер визуально выше) */
 }

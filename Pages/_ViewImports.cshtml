@@ -1,7 +1,16 @@
 ﻿@using RadioAmateurHelper
+<!-- Подключает основное пространство имён проекта. Доступ ко всем типам внутри без явного импорта -->
 @using Microsoft.AspNetCore.Identity
+<!-- Подключает ASP.NET Core Identity: классы для управления пользователями, ролями и входом/выходом -->
 @using RadioAmateurHelper.Models
+<!-- Пространство имён с моделью User и другими моделями данных приложения -->
 @inject SignInManager<User> SignInManager
+<!-- Внедрение сервиса для проверки состояния входа, входа и выхода пользователя -->
 @inject UserManager<User> UserManager
+<!-- Внедрение сервиса для работы с пользователями (получение информации, управление ролями, смена пароля и т.п.) -->
 @namespace RadioAmateurHelper.Pages
+<!-- Задаёт пространство имён по умолчанию для Razor Pages.
+     Это позволяет обращаться к классам в этом пространстве напрямую -->
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!-- Подключает встроенные TagHelper'ы ASP.NET Core, такие как:
+     <form asp-page="...">, <a asp-controller="...">, <input asp-for="..."> и др. -->
