@@ -131,6 +131,9 @@
     <label>Что предлагаете или ищете:</label>
     <textarea asp-for="Message" class="form-control"></textarea>
 
+    <label class="mt-2">Стоимость (₽, необязательно):</label>
+    <input asp-for="Price" type="number" step="0.01" min="0" class="form-control" />
+
     <button type="submit" class="btn btn-success mt-2">Опубликовать</button>
 </form>
 
@@ -139,7 +142,10 @@
     <ul class="mt-4">
         @foreach (var entry in Model.Entries)
         {
-            <li><strong>@entry.Name:</strong> @entry.Message</li>
+            <li>
+                <strong>@entry.Name:</strong> @entry.Message
+                @if (entry.Price.HasValue) { <text> — @entry.Price.Value.ToString("N2") ₽</text> }
+            </li>
         }
     </ul>
 }

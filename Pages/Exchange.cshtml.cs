@@ -14,6 +14,7 @@ namespace RadioAmateurHelper.Pages
 
         [BindProperty] public string Name { get; set; }
         [BindProperty] public string Message { get; set; }
+        [BindProperty] public decimal? Price { get; set; }
 
         public void OnGet() =>
             Entries = _context.ExchangeEntries.OrderByDescending(e => e.PostedAt).ToList();
@@ -26,6 +27,7 @@ namespace RadioAmateurHelper.Pages
                 {
                     Name = Name,
                     Message = Message,
+                    Price = Price,
                     PostedAt = DateTime.Now
                 });
                 _context.SaveChanges();

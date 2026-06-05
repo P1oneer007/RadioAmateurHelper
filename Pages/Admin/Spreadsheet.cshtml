@@ -1,0 +1,687 @@
+@page
+@model RadioAmateurHelper.Pages.Admin.SpreadsheetModel
+@{
+    ViewData["Title"] = "Рабочая таблица";
+}
+<style>
+    body { font-family: sans-serif; }
+
+    .header-overlay {
+        position: relative;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(5px);
+        padding: 24px 30px;
+        margin: 20px auto;
+        max-width: 1400px;
+        border-radius: 20px;
+    }
+
+    .header-overlay h1 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
+    .header-overlay .description { text-align: center; color: #444; margin-bottom: 16px; }
+
+    .nav-links {
+        display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;
+    }
+    .nav-links a {
+        text-decoration: none; color: #0066cc; padding: 6px 12px;
+        border-radius: 6px; background: rgba(255,255,255,0.8);
+    }
+    .nav-links a:hover, .nav-links a.active { background: #e8f0fe; }
+    .nav-links a.active { font-weight: 600; }
+
+    .toolbar {
+        display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center;
+    }
+    .toolbar .btn-group-label { font-weight: 600; color: #555; margin-right: 4px; }
+
+    .sheet-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+        align-items: center;
+    }
+    .sheet-tab {
+        border: 1px solid #c8d6e5;
+        background: #f8fbff;
+        color: #0066cc;
+        border-radius: 8px;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+    .sheet-tab.active {
+        background: #0066cc;
+        color: #fff;
+        border-color: #0066cc;
+        font-weight: 600;
+    }
+    #sheetTabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .sheet-tabs .tab-actions {
+        display: flex;
+        gap: 6px;
+        margin-left: auto;
+    }
+
+    .sheet-wrap { overflow-x: auto; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
+    .sheet-table { border-collapse: collapse; width: 100%; min-width: 600px; }
+    .sheet-table th, .sheet-table td {
+        border: 1px solid #ddd; padding: 0; min-width: 100px; position: relative;
+    }
+    .sheet-table th { background: #f0f4f8; }
+    .sheet-table .row-num { background: #f8f9fa; text-align: center; width: 40px; min-width: 40px; color: #888; font-size: 0.85rem; }
+    .sheet-table .corner { background: #e9ecef; width: 40px; min-width: 40px; }
+
+    .cell-input, .header-input {
+        width: 100%; border: none; padding: 8px 10px; background: transparent;
+        font-size: 0.95rem; box-sizing: border-box;
+    }
+    .cell-input:focus, .header-input:focus { outline: 2px solid #0066cc; background: #fff; }
+    .cell-input.selected { background: #e3f2fd; }
+    .cell-input.result { background: #fff8e1; font-weight: 600; }
+
+    .import-panel {
+        display: none; margin-top: 16px; padding: 16px; border: 1px solid #ddd;
+        border-radius: 8px; background: #fafafa; max-height: 300px; overflow-y: auto;
+    }
+    .import-panel.open { display: block; }
+    .import-item {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 8px 10px; border-bottom: 1px solid #eee; gap: 10px;
+    }
+    .import-item:last-child { border-bottom: none; }
+    .import-item button { white-space: nowrap; }
+
+    .status-bar { margin-top: 12px; font-size: 0.9rem; color: #666; }
+    .formula-bar { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; }
+    .formula-bar input { flex: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px; }
+
+    @@media (max-width: 768px) {
+        .header-overlay { padding: 16px; margin: 10px; }
+        .toolbar { flex-direction: column; align-items: stretch; }
+    }
+</style>
+
+@Html.AntiForgeryToken()
+
+<div class="header-overlay">
+    <h1>Рабочая таблица</h1>
+    <div class="description">
+        Редактируемые таблицы с сохранением, арифметикой и импортом из каталога компонентов, барахолки и заявок на ремонт.
+        @if (Model.UpdatedAt.HasValue)
+        {
+            <span> — сохранено: @Model.UpdatedAt.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</span>
+        }
+    </div>
+
+    <div class="nav-links">
+        <a href="/Admin/Spreadsheet" class="active">Таблица</a>
+        <a href="/Admin/ServiceRequests">Заявки на ремонт</a>
+        <a href="/Admin/Circuits">Схемы</a>
+        <a href="/Admin/References">Справочники</a>
+        <a href="/Admin/Firmwares">Прошивки</a>
+        <a href="/Admin/Blog">Блог и проекты</a>
+        <a href="/Admin/Users">Пользователи</a>
+        <a href="/Admin/Settings">Настройки</a>
+        <a href="/">На главную</a>
+    </div>
+
+    <div class="formula-bar">
+        <label for="formulaInput"><strong>fx</strong></label>
+        <input type="text" id="formulaInput" placeholder="Выберите ячейку или введите формулу: =A1+B1, =A1*2, =A1/B1" />
+        <button type="button" class="btn btn-sm btn-primary" id="applyFormula">Применить</button>
+    </div>
+
+    <div class="sheet-tabs">
+        <div id="sheetTabs"></div>
+        <div class="tab-actions">
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="addSheet">+ Вкладка</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="renameSheet">Переименовать</button>
+            <button type="button" class="btn btn-sm btn-outline-danger" id="deleteSheet">Удалить вкладку</button>
+        </div>
+    </div>
+
+    <div class="toolbar">
+        <span class="btn-group-label">Строки/столбцы:</span>
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="addRow">+ Строка</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="addCol">+ Столбец</button>
+        <button type="button" class="btn btn-sm btn-outline-danger" id="delRow">− Строка</button>
+        <button type="button" class="btn btn-sm btn-outline-danger" id="delCol">− Столбец</button>
+
+        <span class="btn-group-label ms-2">Операции:</span>
+        <button type="button" class="btn btn-sm btn-outline-primary op-btn" data-op="add">+</button>
+        <button type="button" class="btn btn-sm btn-outline-primary op-btn" data-op="sub">−</button>
+        <button type="button" class="btn btn-sm btn-outline-primary op-btn" data-op="mul">×</button>
+        <button type="button" class="btn btn-sm btn-outline-primary op-btn" data-op="div">÷</button>
+
+        <span class="btn-group-label ms-2">Импорт:</span>
+        <button type="button" class="btn btn-sm btn-success" id="toggleComponents">Каталог компонентов</button>
+        <button type="button" class="btn btn-sm btn-success" id="toggleExchange">Обмен и барахолка</button>
+        <button type="button" class="btn btn-sm btn-success" id="toggleRequests">Заявки на ремонт</button>
+
+        <button type="button" class="btn btn-sm btn-primary ms-auto" id="saveBtn">Сохранить</button>
+    </div>
+
+    <div class="import-panel" id="componentsPanel">
+        <h6>Каталог компонентов (магазин админа)</h6>
+        @if (Model.Components.Any())
+        {
+            foreach (var c in Model.Components)
+            {
+                <div class="import-item">
+                    <span><strong>@c.Name</strong> (@c.Type) — @c.Price.ToString("N2") ₽, остаток: @c.Stock</span>
+                    <button type="button" class="btn btn-sm btn-outline-primary import-component"
+                            data-name="@c.Name" data-price="@c.Price" data-type="@c.Type">Добавить в таблицу</button>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">Каталог пуст. <a href="/Components/Create">Добавить компонент</a></p>
+        }
+    </div>
+
+    <div class="import-panel" id="exchangePanel">
+        <h6>Обмен и барахолка</h6>
+        @if (Model.ExchangeEntries.Any())
+        {
+            foreach (var e in Model.ExchangeEntries)
+            {
+                var priceStr = e.Price.HasValue ? e.Price.Value.ToString("N2") : "";
+                <div class="import-item">
+                    <span><strong>@e.Name</strong> — @(e.Message?.Length > 60 ? e.Message.Substring(0, 60) + "…" : e.Message)
+                        @if (e.Price.HasValue) { <text>(@e.Price.Value.ToString("N2") ₽)</text> }</span>
+                    <button type="button" class="btn btn-sm btn-outline-primary import-exchange"
+                            data-name="@e.Name" data-price="@priceStr" data-note="@e.Message">Добавить в таблицу</button>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">Записей нет. <a href="/Exchange">Добавить на барахолке</a></p>
+        }
+    </div>
+
+    <div class="import-panel" id="requestsPanel">
+        <h6>Заявки на ремонт</h6>
+        @if (Model.ServiceRequests.Any())
+        {
+            foreach (var r in Model.ServiceRequests)
+            {
+                <div class="import-item">
+                    <span>
+                        <strong>@r.UserName</strong> — @(r.Message?.Length > 80 ? r.Message.Substring(0, 80) + "…" : r.Message)
+                        <small class="text-muted">(@r.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm"))</small>
+                    </span>
+                    <button type="button" class="btn btn-sm btn-outline-primary import-request"
+                            data-name="@r.UserName" data-note="@r.Message" data-contact="@r.Contact">Добавить в таблицу</button>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">Заявок пока нет.</p>
+        }
+    </div>
+
+    <div class="sheet-wrap">
+        <table class="sheet-table" id="sheetTable">
+            <thead id="sheetHead"></thead>
+            <tbody id="sheetBody"></tbody>
+        </table>
+    </div>
+
+    <div class="status-bar" id="statusBar">Готово</div>
+</div>
+
+@section Scripts {
+<script>
+(function () {
+    const initialData = @Html.Raw(Model.DataJson);
+    let workbook = normalizeData(initialData);
+    let sheetData = currentSheet();
+    let selectedCell = null;
+    let secondSelectedCell = null;
+
+    const tabs = document.getElementById('sheetTabs');
+    const head = document.getElementById('sheetHead');
+    const body = document.getElementById('sheetBody');
+    const formulaInput = document.getElementById('formulaInput');
+    const statusBar = document.getElementById('statusBar');
+
+    function normalizeData(data) {
+        const defaultSheet = {
+            id: createId(),
+            name: 'Таблица 1',
+            headers: ['Наименование', 'Кол-во', 'Цена', 'Сумма', 'Примечание'],
+            rows: []
+        };
+
+        if (!data || typeof data !== 'object') {
+            return { activeTabId: defaultSheet.id, tabs: [defaultSheet] };
+        }
+
+        // Старый формат одной таблицы автоматически становится первой вкладкой.
+        if (Array.isArray(data.headers)) {
+            const migratedSheet = normalizeSheet({
+                id: createId(),
+                name: 'Таблица 1',
+                headers: data.headers,
+                rows: data.rows
+            });
+            return { activeTabId: migratedSheet.id, tabs: [migratedSheet] };
+        }
+
+        if (!Array.isArray(data.tabs) || data.tabs.length === 0) {
+            return { activeTabId: defaultSheet.id, tabs: [defaultSheet] };
+        }
+
+        data.tabs = data.tabs.map((tab, index) => normalizeSheet({
+            ...tab,
+            id: tab.id || createId(),
+            name: tab.name || 'Таблица ' + (index + 1)
+        }));
+        if (!data.activeTabId || !data.tabs.some(tab => tab.id === data.activeTabId)) {
+            data.activeTabId = data.tabs[0].id;
+        }
+        return data;
+    }
+
+    function normalizeSheet(sheet) {
+        if (!Array.isArray(sheet.headers) || sheet.headers.length === 0) {
+            sheet.headers = ['Наименование', 'Кол-во', 'Цена', 'Сумма', 'Примечание'];
+        }
+        if (!Array.isArray(sheet.rows)) sheet.rows = [];
+        sheet.rows = sheet.rows.map(r => {
+            if (!Array.isArray(r)) r = [];
+            while (r.length < sheet.headers.length) r.push('');
+            return r.slice(0, sheet.headers.length);
+        });
+        return sheet;
+    }
+
+    function createId() {
+        return 'tab-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+    }
+
+    function currentSheet() {
+        return workbook.tabs.find(tab => tab.id === workbook.activeTabId) || workbook.tabs[0];
+    }
+
+    function createDefaultSheet(name) {
+        return {
+            id: createId(),
+            name,
+            headers: ['Наименование', 'Кол-во', 'Цена', 'Сумма', 'Примечание'],
+            rows: [['', '1', '', '', '']]
+        };
+    }
+
+    function colLabel(index) {
+        let label = '';
+        let n = index;
+        do {
+            label = String.fromCharCode(65 + (n % 26)) + label;
+            n = Math.floor(n / 26) - 1;
+        } while (n >= 0);
+        return label;
+    }
+
+    function parseNumber(val) {
+        if (val == null) return NaN;
+        const s = String(val).replace(/\s/g, '').replace(',', '.').replace(/[^\d.\-+]/g, '');
+        const n = parseFloat(s);
+        return isNaN(n) ? NaN : n;
+    }
+
+    function getCellRef(row, col) {
+        return colLabel(col) + (row + 1);
+    }
+
+    function resolveRef(ref, excludeRow, excludeCol) {
+        const m = /^([A-Z]+)(\d+)$/i.exec(ref.trim());
+        if (!m) return NaN;
+        let col = 0;
+        for (let i = 0; i < m[1].length; i++) {
+            col = col * 26 + (m[1].toUpperCase().charCodeAt(i) - 64);
+        }
+        col--;
+        const row = parseInt(m[2], 10) - 1;
+        if (row === excludeRow && col === excludeCol) return NaN;
+        if (row < 0 || col < 0 || row >= sheetData.rows.length || col >= sheetData.headers.length) return NaN;
+        const raw = sheetData.rows[row][col];
+        if (typeof raw === 'string' && raw.startsWith('=')) {
+            return evalFormula(raw, row, col);
+        }
+        return parseNumber(raw);
+    }
+
+    function evalFormula(formula, row, col) {
+        if (!formula || !formula.startsWith('=')) return parseNumber(formula);
+        let expr = formula.slice(1).trim();
+        expr = expr.replace(/([A-Z]+\d+)/gi, (match) => {
+            const v = resolveRef(match, row, col);
+            return isNaN(v) ? '0' : String(v);
+        });
+        if (!/^[\d\s+\-*/().]+$/.test(expr)) return NaN;
+        try {
+            return Function('"use strict"; return (' + expr + ')')();
+        } catch { return NaN; }
+    }
+
+    function renderTabs() {
+        tabs.innerHTML = '';
+        workbook.tabs.forEach(tab => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'sheet-tab' + (tab.id === workbook.activeTabId ? ' active' : '');
+            btn.textContent = tab.name;
+            btn.addEventListener('click', () => {
+                workbook.activeTabId = tab.id;
+                selectedCell = null;
+                secondSelectedCell = null;
+                formulaInput.value = '';
+                render();
+            });
+            tabs.appendChild(btn);
+        });
+    }
+
+    function render() {
+        sheetData = currentSheet();
+        renderTabs();
+        head.innerHTML = '';
+        body.innerHTML = '';
+
+        const headRow = document.createElement('tr');
+        const corner = document.createElement('th');
+        corner.className = 'corner';
+        headRow.appendChild(corner);
+
+        sheetData.headers.forEach((h, ci) => {
+            const th = document.createElement('th');
+            const inp = document.createElement('input');
+            inp.type = 'text';
+            inp.className = 'header-input';
+            inp.value = h;
+            inp.dataset.col = ci;
+            inp.addEventListener('input', e => { sheetData.headers[ci] = e.target.value; });
+            th.appendChild(inp);
+            headRow.appendChild(th);
+        });
+        head.appendChild(headRow);
+
+        sheetData.rows.forEach((row, ri) => {
+            const tr = document.createElement('tr');
+            const numTd = document.createElement('td');
+            numTd.className = 'row-num';
+            numTd.textContent = ri + 1;
+            tr.appendChild(numTd);
+
+            row.forEach((cell, ci) => {
+                const td = document.createElement('td');
+                const inp = document.createElement('input');
+                inp.type = 'text';
+                inp.className = 'cell-input';
+                inp.value = cell ?? '';
+                inp.dataset.row = ri;
+                inp.dataset.col = ci;
+
+                inp.addEventListener('focus', () => selectCell(inp, false));
+                inp.addEventListener('click', e => selectCell(inp, e.ctrlKey || e.metaKey));
+                inp.addEventListener('input', e => {
+                    sheetData.rows[ri][ci] = e.target.value;
+                    updateFormulaBar();
+                });
+                inp.addEventListener('keydown', e => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        applyFormulaToSelected();
+                    }
+                });
+                td.appendChild(inp);
+                tr.appendChild(td);
+            });
+            body.appendChild(tr);
+        });
+    }
+
+    function selectCell(inp, additive) {
+        if (additive && selectedCell && selectedCell !== inp) {
+            secondSelectedCell = inp;
+            inp.classList.add('selected');
+            return;
+        }
+        document.querySelectorAll('.cell-input.selected').forEach(el => el.classList.remove('selected'));
+        inp.classList.add('selected');
+        selectedCell = inp;
+        secondSelectedCell = null;
+        formulaInput.value = inp.value;
+    }
+
+    function updateFormulaBar() {
+        if (selectedCell) formulaInput.value = selectedCell.value;
+    }
+
+    function applyFormulaToSelected() {
+        if (!selectedCell) return;
+        const ri = +selectedCell.dataset.row;
+        const ci = +selectedCell.dataset.col;
+        const val = formulaInput.value;
+        sheetData.rows[ri][ci] = val;
+        selectedCell.value = val;
+        if (val.startsWith('=')) {
+            const result = evalFormula(val, ri, ci);
+            if (!isNaN(result)) {
+                selectedCell.classList.add('result');
+                selectedCell.title = '= ' + result;
+            }
+        } else {
+            selectedCell.classList.remove('result');
+            selectedCell.title = '';
+        }
+    }
+
+    function addRow(values) {
+        const row = sheetData.headers.map((_, i) => values && values[i] != null ? String(values[i]) : '');
+        sheetData.rows.push(row);
+        render();
+        setStatus('Строка добавлена');
+    }
+
+    function findColIndex(names) {
+        for (const n of names) {
+            const idx = sheetData.headers.findIndex(h => h.toLowerCase().includes(n));
+            if (idx >= 0) return idx;
+        }
+        return -1;
+    }
+
+    function importRow(name, price, note, source) {
+        const nameCol = Math.max(0, findColIndex(['наимен', 'назван', 'имя', 'name']));
+        const qtyCol = findColIndex(['кол', 'qty', 'колич']);
+        const priceCol = findColIndex(['цен', 'price', 'стоим']);
+        const sumCol = findColIndex(['сумм', 'total', 'итог']);
+        const noteCol = findColIndex(['примеч', 'note', 'коммент', 'опис']);
+
+        const row = sheetData.headers.map(() => '');
+        row[nameCol >= 0 ? nameCol : 0] = name;
+        if (qtyCol >= 0) row[qtyCol] = '1';
+        if (priceCol >= 0 && price) row[priceCol] = price;
+        if (sumCol >= 0 && price) row[sumCol] = price;
+        if (noteCol >= 0 && note) row[noteCol] = (source ? '[' + source + '] ' : '') + (note || '');
+        else if (noteCol < 0 && note) row[row.length - 1] = note;
+
+        addRow(row);
+    }
+
+    function getSelectedCells() {
+        if (selectedCell && secondSelectedCell) return [selectedCell, secondSelectedCell];
+        const cells = Array.from(document.querySelectorAll('.cell-input.selected'));
+        if (cells.length >= 2) return cells.slice(0, 2);
+        if (cells.length === 1) {
+            const ri = +cells[0].dataset.row;
+            const ci = +cells[0].dataset.col;
+            const next = document.querySelector(`.cell-input[data-row="${ri}"][data-col="${ci + 1}"]`);
+            if (next) return [cells[0], next];
+        }
+        return cells;
+    }
+
+    function applyOperation(op) {
+        const cells = getSelectedCells();
+        if (cells.length < 2) {
+            setStatus('Выберите две ячейки (или ячейку и соседнюю справа) для операции');
+            return;
+        }
+        const a = parseNumber(cells[0].value);
+        const b = parseNumber(cells[1].value);
+        if (isNaN(a) || isNaN(b)) {
+            setStatus('Обе ячейки должны содержать числа');
+            return;
+        }
+        let result;
+        switch (op) {
+            case 'add': result = a + b; break;
+            case 'sub': result = a - b; break;
+            case 'mul': result = a * b; break;
+            case 'div': result = b !== 0 ? a / b : NaN; break;
+        }
+        if (isNaN(result)) { setStatus('Ошибка вычисления'); return; }
+
+        const row = sheetData.headers.map(() => '');
+        const nameCol = Math.max(0, findColIndex(['наимен', 'назван']));
+        const sumColIdx = findColIndex(['сумм', 'итог', 'результ']);
+        const resultCol = sumColIdx >= 0 ? sumColIdx : sheetData.headers.length - 1;
+        const ops = { add: '+', sub: '−', mul: '×', div: '÷' };
+        row[nameCol] = cells[0].value + ' ' + ops[op] + ' ' + cells[1].value;
+        row[resultCol] = String(Math.round(result * 10000) / 10000);
+        addRow(row);
+    }
+
+    function setStatus(msg) { statusBar.textContent = msg; }
+
+    async function save() {
+        setStatus('Сохранение…');
+        const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+        const formData = new FormData();
+        formData.append('dataJson', JSON.stringify(workbook));
+        if (token) formData.append('__RequestVerificationToken', token);
+
+        try {
+            const resp = await fetch('?handler=Save', {
+                method: 'POST',
+                body: formData,
+                headers: { 'RequestVerificationToken': token || '' }
+            });
+            if (resp.ok) {
+                const data = await resp.json();
+                setStatus('Сохранено ' + new Date(data.updatedAt).toLocaleString('ru-RU'));
+            } else {
+                setStatus('Ошибка сохранения');
+            }
+        } catch {
+            setStatus('Ошибка сети');
+        }
+    }
+
+    document.getElementById('addRow').addEventListener('click', () => addRow());
+    document.getElementById('addSheet').addEventListener('click', () => {
+        const name = prompt('Название новой вкладки:', 'Таблица ' + (workbook.tabs.length + 1));
+        if (!name) return;
+        const sheet = createDefaultSheet(name.trim());
+        workbook.tabs.push(sheet);
+        workbook.activeTabId = sheet.id;
+        render();
+        setStatus('Вкладка добавлена');
+    });
+    document.getElementById('renameSheet').addEventListener('click', () => {
+        const sheet = currentSheet();
+        const name = prompt('Новое название вкладки:', sheet.name);
+        if (!name) return;
+        sheet.name = name.trim();
+        render();
+        setStatus('Вкладка переименована');
+    });
+    document.getElementById('deleteSheet').addEventListener('click', () => {
+        if (workbook.tabs.length <= 1) {
+            setStatus('Нельзя удалить последнюю вкладку');
+            return;
+        }
+        const sheet = currentSheet();
+        if (!confirm('Удалить вкладку "' + sheet.name + '"?')) return;
+        workbook.tabs = workbook.tabs.filter(tab => tab.id !== sheet.id);
+        workbook.activeTabId = workbook.tabs[0].id;
+        selectedCell = null;
+        secondSelectedCell = null;
+        formulaInput.value = '';
+        render();
+        setStatus('Вкладка удалена');
+    });
+    document.getElementById('addCol').addEventListener('click', () => {
+        sheetData.headers.push('Столбец ' + (sheetData.headers.length + 1));
+        sheetData.rows.forEach(r => r.push(''));
+        render();
+    });
+    document.getElementById('delRow').addEventListener('click', () => {
+        if (sheetData.rows.length === 0) return;
+        sheetData.rows.pop();
+        render();
+    });
+    document.getElementById('delCol').addEventListener('click', () => {
+        if (sheetData.headers.length <= 1) return;
+        sheetData.headers.pop();
+        sheetData.rows.forEach(r => r.pop());
+        render();
+    });
+
+    document.querySelectorAll('.op-btn').forEach(btn => {
+        btn.addEventListener('click', () => applyOperation(btn.dataset.op));
+    });
+
+    document.getElementById('applyFormula').addEventListener('click', applyFormulaToSelected);
+    document.getElementById('saveBtn').addEventListener('click', save);
+
+    document.getElementById('toggleComponents').addEventListener('click', () => {
+        document.getElementById('componentsPanel').classList.toggle('open');
+        document.getElementById('exchangePanel').classList.remove('open');
+        document.getElementById('requestsPanel').classList.remove('open');
+    });
+    document.getElementById('toggleExchange').addEventListener('click', () => {
+        document.getElementById('exchangePanel').classList.toggle('open');
+        document.getElementById('componentsPanel').classList.remove('open');
+        document.getElementById('requestsPanel').classList.remove('open');
+    });
+    document.getElementById('toggleRequests').addEventListener('click', () => {
+        document.getElementById('requestsPanel').classList.toggle('open');
+        document.getElementById('componentsPanel').classList.remove('open');
+        document.getElementById('exchangePanel').classList.remove('open');
+    });
+
+    document.querySelectorAll('.import-component').forEach(btn => {
+        btn.addEventListener('click', () => {
+            importRow(btn.dataset.name, btn.dataset.price, btn.dataset.type, 'Каталог');
+        });
+    });
+    document.querySelectorAll('.import-exchange').forEach(btn => {
+        btn.addEventListener('click', () => {
+            importRow(btn.dataset.name, btn.dataset.price, btn.dataset.note, 'Барахолка');
+        });
+    });
+    document.querySelectorAll('.import-request').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const note = [btn.dataset.contact, btn.dataset.note].filter(Boolean).join(' — ');
+            importRow(btn.dataset.name, '', note, 'Заявка на ремонт');
+        });
+    });
+
+    if (sheetData.rows.length === 0) {
+        sheetData.rows.push(['', '1', '', '', '']);
+    }
+    render();
+})();
+</script>
+}

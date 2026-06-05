@@ -279,6 +279,24 @@ namespace RadioAmateurHelper.Migrations
                     b.ToTable("Components");
                 });
 
+            modelBuilder.Entity("RadioAmateurHelper.Models.AdminSpreadsheet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DataJson")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AdminSpreadsheets");
+                });
+
             modelBuilder.Entity("RadioAmateurHelper.Models.ExchangeEntry", b =>
                 {
                     b.Property<int>("Id")
@@ -291,6 +309,9 @@ namespace RadioAmateurHelper.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("Price")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("PostedAt")

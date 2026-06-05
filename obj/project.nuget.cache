@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BwkI9Tc+Kkk=",
+  "dgSpecHash": "Nm9tXc+SRaI=",
   "success": true,
-  "projectFilePath": "D:\\data\\music\\сайты\\RadioAmateurHelper\\RadioAmateurHelper\\RadioAmateurHelper.csproj",
+  "projectFilePath": "D:\\data\\music\\сайты_курс_сайтов\\RadioAmateurHelper\\RadioAmateurHelper\\RadioAmateurHelper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\root\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.15\\microsoft.aspnetcore.cryptography.internal.8.0.15.nupkg.sha512",
