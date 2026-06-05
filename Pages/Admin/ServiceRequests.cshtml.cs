@@ -18,7 +18,8 @@ namespace RadioAmateurHelper.Pages.Admin
         public IActionResult OnGet()
         {
             // Проверка Email пользователя
-            if (User.Identity?.IsAuthenticated != true || User.Identity.Name != "Leka-07@bk.ru")
+            if (User.Identity?.IsAuthenticated != true ||
+                !string.Equals(User.Identity.Name, "Leka-07@bk.ru", StringComparison.OrdinalIgnoreCase))
             {
                 return Forbid(); // 403 Forbidden
             }

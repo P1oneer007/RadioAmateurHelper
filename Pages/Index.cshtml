@@ -362,7 +362,8 @@
 <div class="top-bar">
     <div class="top-bar-buttons">
         @* Добавляем пункт Админка только для нужного Email *@
-        @if (User.Identity?.IsAuthenticated == true && User.Identity.Name == "Leka-07@bk.ru")
+        @if (User.Identity?.IsAuthenticated == true &&
+                string.Equals(User.Identity.Name, "Leka-07@bk.ru", StringComparison.OrdinalIgnoreCase))
         {
             <a href="/Admin">Админка</a>
         }

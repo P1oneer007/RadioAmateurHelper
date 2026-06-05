@@ -69,6 +69,7 @@ namespace RadioAmateurHelper.Pages.Admin
         }
 
         private bool IsAdmin() =>
-            User.Identity?.IsAuthenticated == true && User.Identity.Name == "Leka-07@bk.ru";
+            User.Identity?.IsAuthenticated == true &&
+            string.Equals(User.Identity.Name, "Leka-07@bk.ru", StringComparison.OrdinalIgnoreCase);
     }
 }
