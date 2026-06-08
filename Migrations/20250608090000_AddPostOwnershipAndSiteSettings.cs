@@ -35,10 +35,6 @@ namespace RadioAmateurHelper.Migrations
                     table.PrimaryKey("PK_SiteSettings", x => x.Id);
                 });
 
-            migrationBuilder.InsertData(
-                table: "SiteSettings",
-                columns: new[] { "Id", "AllowUsersToDeleteOwnPosts" },
-                values: new object[] { 1, false });
         }
 
         /// <inheritdoc />
