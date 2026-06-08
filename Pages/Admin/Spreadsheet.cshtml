@@ -171,6 +171,12 @@
         <button type="button" class="btn btn-sm btn-success" id="toggleExchange">Обмен и барахолка</button>
         <button type="button" class="btn btn-sm btn-success" id="toggleRequests">Заявки на ремонт</button>
 
+        <span class="btn-group-label ms-2">Файлы:</span>
+        <button type="button" class="btn btn-sm btn-outline-success" id="exportExcel">Экспорт Excel</button>
+        <button type="button" class="btn btn-sm btn-outline-danger" id="exportPdf">Экспорт PDF</button>
+        <label class="btn btn-sm btn-outline-secondary mb-0" for="importTableFile">Импорт в новую вкладку</label>
+        <input type="file" id="importTableFile" accept=".csv,.tsv,.txt,.xls" style="display:none" />
+
         <button type="button" class="btn btn-sm btn-primary ms-auto" id="saveBtn">Сохранить</button>
     </div>
 
@@ -631,6 +637,164 @@
         addRow(row);
     }
 
+    function sanitizeFileName(name) {
+        return (name || 'table')
+            .replace(/[\\/:*?"<>|]+/g, '_')
+            .replace(/\s+/g, '_')
+            .slice(0, 80);
+    }
+
+    function escapeHtml(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function buildHtmlTable(sheet) {
+        const headerCells = sheet.headers.map(h => '<th>' + escapeHtml(h) + '</th>').join('');
+        const rows = sheet.rows.map(row =>
+            '<tr>' + sheet.headers.map((_, index) => '<td>' + escapeHtml(row[index] ?? '') + '</td>').join('') + '</tr>'
+        ).join('');
+        return '<table border="1"><thead><tr>' + headerCells + '</tr></thead><tbody>' + rows + '</tbody></table>';
+    }
+
+    function downloadBlob(content, fileName, mimeType) {
+        const blob = new Blob([content], { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+    }
+
+    function exportCurrentSheetToExcel() {
+        const sheet = currentSheet();
+        const html = '\ufeff<html><head><meta charset="utf-8"></head><body>' +
+            '<h3>' + escapeHtml(sheet.name) + '</h3>' +
+            buildHtmlTable(sheet) +
+            '</body></html>';
+        downloadBlob(html, sanitizeFileName(sheet.name) + '.xls', 'application/vnd.ms-excel;charset=utf-8');
+        setStatus('Экспорт Excel выполнен');
+    }
+
+    function exportCurrentSheetToPdf() {
+        const sheet = currentSheet();
+        const printWindow = window.open('', '_blank');
+        if (!printWindow) {
+            setStatus('Браузер заблокировал окно печати');
+            return;
+        }
+        printWindow.document.write(
+            '<!doctype html><html><head><meta charset="utf-8"><title>' + escapeHtml(sheet.name) + '</title>' +
+            '<style>body{font-family:Arial,sans-serif;padding:20px}table{border-collapse:collapse;width:100%}' +
+            'th,td{border:1px solid #999;padding:6px;text-align:left}th{background:#eef3f8}</style></head><body>' +
+            '<h2>' + escapeHtml(sheet.name) + '</h2>' +
+            buildHtmlTable(sheet) +
+            '<script>window.onload=function(){window.print();};<\/script>' +
+            '</body></html>'
+        );
+        printWindow.document.close();
+        setStatus('Открыто окно экспорта PDF');
+    }
+
+    function detectDelimiter(text) {
+        const firstLine = text.split('\n')[0] || '';
+        const candidates = ['\t', ';', ','];
+        return candidates
+            .map(delimiter => ({ delimiter, count: firstLine.split(delimiter).length - 1 }))
+            .sort((a, b) => b.count - a.count)[0].delimiter;
+    }
+
+    function parseDelimitedTable(text) {
+        const normalizedText = text.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+        if (!normalizedText) return null;
+        const delimiter = detectDelimiter(normalizedText);
+        const rows = [];
+        let row = [];
+        let cell = '';
+        let inQuotes = false;
+
+        for (let i = 0; i < normalizedText.length; i++) {
+            const ch = normalizedText[i];
+            const next = normalizedText[i + 1];
+
+            if (ch === '"') {
+                if (inQuotes && next === '"') {
+                    cell += '"';
+                    i++;
+                } else {
+                    inQuotes = !inQuotes;
+                }
+            } else if (ch === delimiter && !inQuotes) {
+                row.push(cell);
+                cell = '';
+            } else if (ch === '\n' && !inQuotes) {
+                row.push(cell);
+                rows.push(row);
+                row = [];
+                cell = '';
+            } else {
+                cell += ch;
+            }
+        }
+
+        row.push(cell);
+        rows.push(row);
+        return rows.filter(r => r.some(c => String(c).trim() !== ''));
+    }
+
+    function parseHtmlTable(text) {
+        if (!/<table[\s>]/i.test(text)) return null;
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const table = doc.querySelector('table');
+        if (!table) return null;
+
+        return Array.from(table.querySelectorAll('tr'))
+            .map(tr => Array.from(tr.querySelectorAll('th,td')).map(cell => cell.textContent.trim()))
+            .filter(row => row.some(cell => cell !== ''));
+    }
+
+    function parseImportedTable(text) {
+        return parseHtmlTable(text) || parseDelimitedTable(text);
+    }
+
+    function importTableFile(file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            const parsed = parseImportedTable(String(reader.result || ''));
+            if (!parsed || parsed.length === 0) {
+                setStatus('Файл пустой или не распознан');
+                return;
+            }
+
+            const headers = parsed[0].map(h => String(h || '').trim() || 'Столбец');
+            const rows = parsed.slice(1);
+            const sheet = normalizeSheet({
+                id: createId(),
+                name: file.name.replace(/\.[^.]+$/, '') || 'Импорт',
+                headers,
+                rows
+            });
+
+            workbook.tabs.push(sheet);
+            workbook.activeTabId = sheet.id;
+            selectedCell = null;
+            secondSelectedCell = null;
+            formulaInput.value = '';
+            render();
+            setStatus('Импортировано в новую вкладку: ' + sheet.name);
+        };
+        reader.onerror = () => setStatus('Ошибка чтения файла');
+        reader.readAsText(file, 'utf-8');
+    }
+
     function setStatus(msg) { statusBar.textContent = msg; }
 
     async function save() {
@@ -713,6 +877,13 @@
 
     document.getElementById('applyFormula').addEventListener('click', applyFormulaToSelected);
     document.getElementById('saveBtn').addEventListener('click', save);
+    document.getElementById('exportExcel').addEventListener('click', exportCurrentSheetToExcel);
+    document.getElementById('exportPdf').addEventListener('click', exportCurrentSheetToPdf);
+    document.getElementById('importTableFile').addEventListener('change', e => {
+        const file = e.target.files && e.target.files[0];
+        if (file) importTableFile(file);
+        e.target.value = '';
+    });
 
     document.getElementById('toggleComponents').addEventListener('click', () => {
         document.getElementById('componentsPanel').classList.toggle('open');
