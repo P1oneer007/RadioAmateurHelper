@@ -8,8 +8,11 @@ namespace RadioAmateurHelper.Data
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            // Убедимся, что база применена
-            context.Database.EnsureCreated();
+            if (!context.SiteSettings.Any())
+            {
+                context.SiteSettings.Add(new SiteSetting());
+                context.SaveChanges();
+            }
 
             // Проверка, есть ли данные
             if (context.Circuits.Any() || context.References.Any() || context.Firmwares.Any())

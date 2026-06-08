@@ -358,4 +358,19 @@
 <div class="header-overlay">
     <h1>Настройки сайта</h1>
     <p>Редактирование основных настроек сайта.</p>
+
+    @if (!string.IsNullOrEmpty(Model.StatusMessage))
+    {
+        <div class="alert alert-success">@Model.StatusMessage</div>
+    }
+
+    <form method="post" class="text-start" style="max-width: 720px; margin: 0 auto;">
+        <div class="form-check form-switch mb-3">
+            <input asp-for="AllowUsersToDeleteOwnPosts" class="form-check-input" />
+            <label asp-for="AllowUsersToDeleteOwnPosts" class="form-check-label">
+                Разрешить авторизованным пользователям удалять только свои посты
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить настройки</button>
+    </form>
 </div>

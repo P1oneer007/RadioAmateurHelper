@@ -2,6 +2,8 @@
 @model RadioAmateurHelper.Pages.Components.IndexModel
 @{
     ViewData["Title"] = "Каталог компонентов";
+    var isAdmin = User.Identity?.IsAuthenticated == true &&
+        string.Equals(User.Identity.Name, "Leka-07@bk.ru", StringComparison.OrdinalIgnoreCase);
 }
 <style>
     .header-overlay {
@@ -128,7 +130,10 @@
     <form method="get" class="mb-4">
         <input asp-for="SearchTerm" placeholder="Введите название или тип..." class="form-control mb-3" />
         <button type="submit" class="btn btn-outline-primary">Поиск</button>
-        <a class="btn btn-success ms-2" href="/Components/Create">Добавить компонент</a>
+        @if (isAdmin)
+        {
+            <a class="btn btn-success ms-2" href="/Components/Create">Добавить компонент</a>
+        }
     </form>
 
     @if (Model.Results.Any())
@@ -158,10 +163,13 @@
                                 <img src="@c.SchematicSymbolUrl" alt="Символ" style="max-height: 80px;">
                             </div>
                         }
-                        <div class="card-footer">
-                            <a class="btn btn-warning btn-sm" href="/Components/Edit/@c.Id">Редактировать</a>
-                            <a class="btn btn-danger btn-sm ms-2" href="/Components/Delete?id=@c.Id">Удалить</a>
-                        </div>
+                        @if (isAdmin)
+                        {
+                            <div class="card-footer">
+                                <a class="btn btn-warning btn-sm" href="/Components/Edit/@c.Id">Редактировать</a>
+                                <a class="btn btn-danger btn-sm ms-2" href="/Components/Delete?id=@c.Id">Удалить</a>
+                            </div>
+                        }
                     </div>
                 </div>
             }

@@ -354,5 +354,40 @@
 </style>
 <div class="header-overlay">
     <h1>Блог и проекты</h1>
-    <p>Создание и редактирование записей блога.</p>
+    <p>Создание, просмотр и удаление записей блога.</p>
+    <p><a class="btn btn-primary" href="/Blog/Create">Создать запись</a></p>
+
+    @if (Model.Posts.Any())
+    {
+        <table class="table table-striped text-start">
+            <thead>
+                <tr>
+                    <th>Заголовок</th>
+                    <th>Автор</th>
+                    <th>Дата</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var post in Model.Posts)
+                {
+                    <tr>
+                        <td><a href="/Blog/Post?id=@post.Id">@post.Title</a></td>
+                        <td>@(post.AuthorName ?? "Не указан")</td>
+                        <td>@post.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td class="text-end">
+                            <form method="post" asp-page-handler="Delete" asp-route-id="@post.Id"
+                                  onsubmit="return confirm('Удалить пост?');">
+                                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Постов пока нет.</p>
+    }
 </div>

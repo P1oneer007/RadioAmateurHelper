@@ -16,6 +16,8 @@ namespace RadioAmateurHelper.Models
         public string? VideoUrl { get; set; } // Видео
         public string? FileUrl { get; set; }  // Любой файл
         public DateTime CreatedAt { get; set; } = DateTime.Now;        
+        public string? AuthorUserId { get; set; }
+        public string? AuthorName { get; set; }
 
     }
 }

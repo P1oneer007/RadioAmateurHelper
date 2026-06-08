@@ -2,6 +2,8 @@
 @model RadioAmateurHelper.Pages.Circuits.IndexModel
 @{
     ViewData["Title"] = "Сборник схем";
+    var isAdmin = User.Identity?.IsAuthenticated == true &&
+        string.Equals(User.Identity.Name, "Leka-07@bk.ru", StringComparison.OrdinalIgnoreCase);
 }
 <style>
     .header-overlay {
@@ -136,7 +138,10 @@
     <button type="submit" class="btn btn-primary">Применить</button>
 </form>
 
-<a class="btn btn-success mb-3" href="/Circuits/Create">Добавить новую схему</a>
+@if (isAdmin)
+{
+    <a class="btn btn-success mb-3" href="/Circuits/Create">Добавить новую схему</a>
+}
 
 @foreach (var circuit in Model.Circuits)
 {
@@ -151,8 +156,11 @@
         {
             <a href="@circuit.SchematicFilePath" class="btn btn-outline-primary btn-sm" download>Скачать</a>
         }
-        <a class="btn btn-warning btn-sm ms-2" href="/Circuits/Edit/@circuit.Id">Редактировать</a>
-        <a class="btn btn-danger btn-sm ms-2" href="/Circuits/Delete/@circuit.Id">Удалить</a>
+        @if (isAdmin)
+        {
+            <a class="btn btn-warning btn-sm ms-2" href="/Circuits/Edit/@circuit.Id">Редактировать</a>
+            <a class="btn btn-danger btn-sm ms-2" href="/Circuits/Delete/@circuit.Id">Удалить</a>
+        }
     </div>
 }
 

@@ -17,6 +17,7 @@ namespace RadioAmateurHelper.Data
         public DbSet<BlogPost> BlogPosts { get; set; }
         public DbSet<ComponentModel> Components { get; set; }
         public DbSet<AdminSpreadsheet> AdminSpreadsheets { get; set; }
+        public DbSet<SiteSetting> SiteSettings { get; set; }
 
     }
 }

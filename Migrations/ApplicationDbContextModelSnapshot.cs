@@ -155,6 +155,12 @@ namespace RadioAmateurHelper.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AuthorName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AuthorUserId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -395,6 +401,20 @@ namespace RadioAmateurHelper.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ServiceRequests");
+                });
+
+            modelBuilder.Entity("RadioAmateurHelper.Models.SiteSetting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("AllowUsersToDeleteOwnPosts")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SiteSettings");
                 });
 
             modelBuilder.Entity("RadioAmateurHelper.Models.User", b =>

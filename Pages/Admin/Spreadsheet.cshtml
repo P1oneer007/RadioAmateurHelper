@@ -79,9 +79,18 @@
         width: 100%; border: none; padding: 8px 10px; background: transparent;
         font-size: 0.95rem; box-sizing: border-box;
     }
+    .cell-select {
+        width: 100%;
+        border: none;
+        padding: 8px 10px;
+        background: transparent;
+        font-size: 0.95rem;
+        box-sizing: border-box;
+    }
     .cell-input:focus, .header-input:focus { outline: 2px solid #0066cc; background: #fff; }
-    .cell-input.selected { background: #e3f2fd; }
-    .cell-input.result { background: #fff8e1; font-weight: 600; }
+    .cell-select:focus { outline: 2px solid #0066cc; background: #fff; }
+    .cell-input.selected, .cell-select.selected { background: #e3f2fd; }
+    .cell-input.result, .cell-select.result { background: #fff8e1; font-weight: 600; }
 
     .import-panel {
         display: none; margin-top: 16px; padding: 16px; border: 1px solid #ddd;
@@ -228,6 +237,16 @@
     </div>
 
     <div class="sheet-wrap">
+        <datalist id="typeOptions">
+            <option value="Компонент"></option>
+            <option value="Модуль"></option>
+            <option value="Плата"></option>
+            <option value="Радиостанция"></option>
+            <option value="Антенна"></option>
+            <option value="Кабель"></option>
+            <option value="Заявка на ремонт"></option>
+            <option value="Барахолка"></option>
+        </datalist>
         <table class="sheet-table" id="sheetTable">
             <thead id="sheetHead"></thead>
             <tbody id="sheetBody"></tbody>
@@ -253,10 +272,11 @@
     const statusBar = document.getElementById('statusBar');
 
     function normalizeData(data) {
+        const defaultHeaders = ['Наименование', 'Тип', 'Каналов', 'Кол-во', 'Цена', 'Сумма', 'Примечание'];
         const defaultSheet = {
             id: createId(),
             name: 'Таблица 1',
-            headers: ['Наименование', 'Кол-во', 'Цена', 'Сумма', 'Примечание'],
+            headers: defaultHeaders,
             rows: []
         };
 
@@ -292,15 +312,29 @@
 
     function normalizeSheet(sheet) {
         if (!Array.isArray(sheet.headers) || sheet.headers.length === 0) {
-            sheet.headers = ['Наименование', 'Кол-во', 'Цена', 'Сумма', 'Примечание'];
+            sheet.headers = ['Наименование', 'Тип', 'Каналов', 'Кол-во', 'Цена', 'Сумма', 'Примечание'];
         }
         if (!Array.isArray(sheet.rows)) sheet.rows = [];
+        ensureColumnAfter(sheet, ['тип', 'type'], 'Тип', ['наимен', 'назван', 'имя', 'name']);
+        ensureColumnAfter(sheet, ['канал', 'channels'], 'Каналов', ['тип', 'type']);
         sheet.rows = sheet.rows.map(r => {
             if (!Array.isArray(r)) r = [];
             while (r.length < sheet.headers.length) r.push('');
             return r.slice(0, sheet.headers.length);
         });
         return sheet;
+    }
+
+    function ensureColumnAfter(sheet, aliases, columnName, afterAliases) {
+        const existingIndex = sheet.headers.findIndex(h =>
+            aliases.some(alias => String(h).toLowerCase().includes(alias)));
+        if (existingIndex >= 0) return;
+
+        const afterIndex = sheet.headers.findIndex(h =>
+            afterAliases.some(alias => String(h).toLowerCase().includes(alias)));
+        const insertIndex = afterIndex >= 0 ? afterIndex + 1 : sheet.headers.length;
+        sheet.headers.splice(insertIndex, 0, columnName);
+        sheet.rows.forEach(row => row.splice(insertIndex, 0, columnName === 'Каналов' ? '-' : ''));
     }
 
     function createId() {
@@ -315,8 +349,8 @@
         return {
             id: createId(),
             name,
-            headers: ['Наименование', 'Кол-во', 'Цена', 'Сумма', 'Примечание'],
-            rows: [['', '1', '', '', '']]
+            headers: ['Наименование', 'Тип', 'Каналов', 'Кол-во', 'Цена', 'Сумма', 'Примечание'],
+            rows: [['', '', '-', '1', '', '', '']]
         };
     }
 
@@ -423,16 +457,33 @@
 
             row.forEach((cell, ci) => {
                 const td = document.createElement('td');
-                const inp = document.createElement('input');
-                inp.type = 'text';
-                inp.className = 'cell-input';
-                inp.value = cell ?? '';
+                const headerName = String(sheetData.headers[ci] || '').toLowerCase();
+                const inp = headerName.includes('канал')
+                    ? createChannelSelect(cell)
+                    : document.createElement('input');
+
+                if (inp.tagName === 'INPUT') {
+                    inp.type = 'text';
+                    inp.className = 'cell-input';
+                    inp.value = cell ?? '';
+                    if (headerName.includes('тип') || headerName.includes('type')) {
+                        inp.setAttribute('list', 'typeOptions');
+                    }
+                } else {
+                    inp.className = 'cell-select';
+                    inp.value = cell || '-';
+                }
+
                 inp.dataset.row = ri;
                 inp.dataset.col = ci;
 
                 inp.addEventListener('focus', () => selectCell(inp, false));
                 inp.addEventListener('click', e => selectCell(inp, e.ctrlKey || e.metaKey));
                 inp.addEventListener('input', e => {
+                    sheetData.rows[ri][ci] = e.target.value;
+                    updateFormulaBar();
+                });
+                inp.addEventListener('change', e => {
                     sheetData.rows[ri][ci] = e.target.value;
                     updateFormulaBar();
                 });
@@ -449,13 +500,27 @@
         });
     }
 
+    function createChannelSelect(value) {
+        const select = document.createElement('select');
+        ['-', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].forEach(optionValue => {
+            const option = document.createElement('option');
+            option.value = optionValue;
+            option.textContent = optionValue;
+            select.appendChild(option);
+        });
+        select.value = value && ['-', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].includes(String(value))
+            ? String(value)
+            : '-';
+        return select;
+    }
+
     function selectCell(inp, additive) {
         if (additive && selectedCell && selectedCell !== inp) {
             secondSelectedCell = inp;
             inp.classList.add('selected');
             return;
         }
-        document.querySelectorAll('.cell-input.selected').forEach(el => el.classList.remove('selected'));
+        document.querySelectorAll('.cell-input.selected, .cell-select.selected').forEach(el => el.classList.remove('selected'));
         inp.classList.add('selected');
         selectedCell = inp;
         secondSelectedCell = null;
@@ -500,8 +565,10 @@
         return -1;
     }
 
-    function importRow(name, price, note, source) {
+    function importRow(name, price, note, source, type, channels) {
         const nameCol = Math.max(0, findColIndex(['наимен', 'назван', 'имя', 'name']));
+        const typeCol = findColIndex(['тип', 'type']);
+        const channelsCol = findColIndex(['канал', 'channels']);
         const qtyCol = findColIndex(['кол', 'qty', 'колич']);
         const priceCol = findColIndex(['цен', 'price', 'стоим']);
         const sumCol = findColIndex(['сумм', 'total', 'итог']);
@@ -509,6 +576,8 @@
 
         const row = sheetData.headers.map(() => '');
         row[nameCol >= 0 ? nameCol : 0] = name;
+        if (typeCol >= 0) row[typeCol] = type || source || '';
+        if (channelsCol >= 0) row[channelsCol] = channels || '-';
         if (qtyCol >= 0) row[qtyCol] = '1';
         if (priceCol >= 0 && price) row[priceCol] = price;
         if (sumCol >= 0 && price) row[sumCol] = price;
@@ -520,12 +589,12 @@
 
     function getSelectedCells() {
         if (selectedCell && secondSelectedCell) return [selectedCell, secondSelectedCell];
-        const cells = Array.from(document.querySelectorAll('.cell-input.selected'));
+        const cells = Array.from(document.querySelectorAll('.cell-input.selected, .cell-select.selected'));
         if (cells.length >= 2) return cells.slice(0, 2);
         if (cells.length === 1) {
             const ri = +cells[0].dataset.row;
             const ci = +cells[0].dataset.col;
-            const next = document.querySelector(`.cell-input[data-row="${ri}"][data-col="${ci + 1}"]`);
+            const next = document.querySelector(`.cell-input[data-row="${ri}"][data-col="${ci + 1}"], .cell-select[data-row="${ri}"][data-col="${ci + 1}"]`);
             if (next) return [cells[0], next];
         }
         return cells;
@@ -663,23 +732,28 @@
 
     document.querySelectorAll('.import-component').forEach(btn => {
         btn.addEventListener('click', () => {
-            importRow(btn.dataset.name, btn.dataset.price, btn.dataset.type, 'Каталог');
+            importRow(btn.dataset.name, btn.dataset.price, btn.dataset.type, 'Каталог', btn.dataset.type, '-');
         });
     });
     document.querySelectorAll('.import-exchange').forEach(btn => {
         btn.addEventListener('click', () => {
-            importRow(btn.dataset.name, btn.dataset.price, btn.dataset.note, 'Барахолка');
+            importRow(btn.dataset.name, btn.dataset.price, btn.dataset.note, 'Барахолка', 'Барахолка', '-');
         });
     });
     document.querySelectorAll('.import-request').forEach(btn => {
         btn.addEventListener('click', () => {
             const note = [btn.dataset.contact, btn.dataset.note].filter(Boolean).join(' — ');
-            importRow(btn.dataset.name, '', note, 'Заявка на ремонт');
+            importRow(btn.dataset.name, '', note, 'Заявка на ремонт', 'Заявка на ремонт', '-');
         });
     });
 
     if (sheetData.rows.length === 0) {
-        sheetData.rows.push(['', '1', '', '', '']);
+        sheetData.rows.push(sheetData.headers.map(header => {
+            const normalized = String(header).toLowerCase();
+            if (normalized.includes('канал')) return '-';
+            if (normalized.includes('кол')) return '1';
+            return '';
+        }));
     }
     render();
 })();

@@ -129,11 +129,11 @@
 
     <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <input type="text" name="Title" class="form-control" placeholder="Заголовок" required />
+            <input asp-for="BlogPost.Title" class="form-control" placeholder="Заголовок" required />
         </div>
 
         <div class="mb-3">
-            <textarea name="Content" class="form-control" rows="10" placeholder="Текст записи" required></textarea>
+            <textarea asp-for="BlogPost.Content" class="form-control" rows="10" placeholder="Текст записи" required></textarea>
         </div>
 
         <div class="mb-3">

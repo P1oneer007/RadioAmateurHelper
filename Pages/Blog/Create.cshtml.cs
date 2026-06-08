@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RadioAmateurHelper.Data;
 using RadioAmateurHelper.Models;
+using System.Security.Claims;
 
 namespace RadioAmateurHelper.Pages.Blog
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
@@ -27,6 +30,8 @@ namespace RadioAmateurHelper.Pages.Blog
                 return Page();
 
             BlogPost.CreatedAt = DateTime.Now;
+            BlogPost.AuthorUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            BlogPost.AuthorName = User.Identity?.Name;
 
             _context.BlogPosts.Add(BlogPost);
             await _context.SaveChangesAsync();

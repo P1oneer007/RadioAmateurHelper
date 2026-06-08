@@ -127,7 +127,14 @@
 <div class="header-overlay">
     <h1>Блог и проекты</h1>
 
-    <a class="btn btn-primary mb-3" href="/Blog/Create">Создать новую запись</a>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <a class="btn btn-primary mb-3" href="/Blog/Create">Создать новую запись</a>
+    }
+    else
+    {
+        <p><a href="/Identity/Account/Login">Войдите</a>, чтобы создать новую запись.</p>
+    }
     
 
     @if (Model.Posts.Any())
@@ -138,9 +145,12 @@
                 <li class="list-group-item">
                     <a href="/Blog/Post?id=@post.Id">@post.Title</a> <small class="text-muted">@post.CreatedAt.ToShortDateString()</small>
 				
-                    <div>
-					    <a class="btn btn-danger btn-sm" href="/Blog/Delete?id=@post.Id">Удалить</a>
-					</div>
+                    @if (Model.IsAdmin || (Model.AllowUsersToDeleteOwnPosts && post.AuthorUserId == Model.CurrentUserId))
+                    {
+                        <div>
+                            <a class="btn btn-danger btn-sm" href="/Blog/Delete?id=@post.Id">Удалить</a>
+                        </div>
+                    }
 				</li>
             }
         </ul>
